@@ -1,0 +1,12 @@
+Package: Nakke
+Type: Package
+Encoding: UTF-8
+Title: Resultattjenester for Degenerativ Nakke
+Version: 0.1
+Date: 2016-02-10
+Author: Lena Ringstad Olsen, Nasjonalt Servicemiljo for Kvalitetsregistre, SKDE
+Maintainer: Lena Ringstad Olsen <lena.olsen@skde.no>
+Depends: R (>= 3.2.3)
+Description: More about what it does (maybe more than one line)
+License: GPL
+LazyData: TRUE
