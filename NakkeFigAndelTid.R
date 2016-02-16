@@ -1,10 +1,12 @@
-#' Tidstrend (år) som viser andel av pasienter for gitt variabel.
+#' Tidstrend (år) av andel for en gitt variabel.
 #'
 #' Funksjon som genererer en figur med andeler av en variabel for hvert år.
 #'
-#' Detajer:
+#' Detaljer:
 #'
-#' @inheritParams FigAndeler()
+#' @inheritParams FigAndeler
+#' @export
+
 
 FigAndelTid <- function(RegData, valgtVar, datoFra='2013-01-01', datoTil='3000-12-31',
                         minald=0, maxald=130, erMann='', tittel=1, reshID, outfile='',

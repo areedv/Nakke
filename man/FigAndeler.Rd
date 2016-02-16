@@ -30,11 +30,9 @@ funksjoner der data allerede er tilgjengelig.}
 
 \item{outfile}{- navn på fil figuren skrives ned til}
 
+\item{reshID}{- avdelingsid (reshID) for egen avdeling,}
+
 \item{enhetsUtvalg}{- 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet}
-
-\item{libkat}{- sti til bibliotekkatalog (fjerne..?)}
-
-\item{egenReshID}{- avdelingsid (reshID) for egen avdeling,}
 }
 \description{
 Her kommer muligens mer forklaring...?

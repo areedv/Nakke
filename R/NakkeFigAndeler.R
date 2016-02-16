@@ -9,9 +9,8 @@
 #' Settes til en annen verdi om data leveres til funksjonen gjennom 'RegData',
 #' eksempelvis ved bruk av eksempeldatasettet eller ved kall fra andre
 #' funksjoner der data allerede er tilgjengelig.
-#' @param libkat - sti til bibliotekkatalog (fjerne..?)
 #' @param outfile - navn på fil figuren skrives ned til
-#' @param egenReshID - avdelingsid (reshID) for egen avdeling,
+#' @param reshID - avdelingsid (reshID) for egen avdeling,
 #' @param valgtVar - Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...
 #' @param erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 #' @param minald - alder, fra og med
@@ -306,7 +305,7 @@ if (valgtVar == 'UforetrygdPreOp') {
 	}
 if (valgtVar=='Utdanning') {
 	retn <- 'H'
-	rtxt <- c('Grunnskole++, 7-10år','Real-, yrkes- el vg skole', #'Real-, yrkes-/yrkesfaglig vg skole',
+	grtxt <- c('Grunnskole++, 7-10år','Real-, yrkes- el vg skole', #'Real-, yrkes-/yrkesfaglig vg skole',
 				 'Allmennfaglig vg skole','Høyskole/universitet, <4 år','Høyskole/universitet, 4år+', 'Ukjent')
 	RegData$VariabelGr <- 9
 	indDum <- which(RegData$Utdanning %in% 1:5)

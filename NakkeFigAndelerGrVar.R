@@ -6,7 +6,8 @@
 #'
 #' Detajer:
 #'
-#' @inheritParams FigAndeler()
+#' @inheritParams FigAndeler
+#' @export
 
 FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2013-01-01', datoTil='3000-12-31', enhetsUtvalg=0,
                             minald=0, maxald=130, erMann='', hentData=0, tittel=1, reshID, outfile='') {
