@@ -1,8 +1,9 @@
-#'Søylediagram, horisontalt eller vertikalt, som viser andeler av ulike variable:
+#' Søylediagram, horisontalt eller vertikalt, som viser andeler av ulike variable:
 #'
 #' Her kommer muligens mer forklaring...?
 #'
-#' Inndata:
+#' Detajer...:
+#'
 #' @param RegData - ei dataramme med alle nødvendige variable fra registeret
 #' @param hentData - Settes til 1 (standard) om det skal spørres etter data fra funksjonen.
 #' Settes til en annen verdi om data leveres til funksjonen gjennom 'RegData',
@@ -20,7 +21,7 @@
 #' @param enhetsUtvalg - 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
 #' @export
 
-FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2007-01-01', datoTil='3000-12-31',
+FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2013-01-01', datoTil='3000-12-31',
 		minald=0, maxald=130, erMann='', tittel=1, outfile='',
 		reshID, enhetsUtvalg=1)	#sml=1, egenavd=1, plotType='S',libkat,
 {

@@ -4,7 +4,7 @@
 \alias{FigAndeler}
 \title{Søylediagram, horisontalt eller vertikalt, som viser andeler av ulike variable:}
 \usage{
-FigAndeler(RegData, hentData = 1, valgtVar, datoFra = "2007-01-01",
+FigAndeler(RegData, hentData = 1, valgtVar, datoFra = "2013-01-01",
   datoTil = "3000-12-31", minald = 0, maxald = 130, erMann = "",
   tittel = 1, outfile = "", reshID, enhetsUtvalg = 1)
 }
@@ -40,6 +40,6 @@ funksjoner der data allerede er tilgjengelig.}
 Her kommer muligens mer forklaring...?
 }
 \details{
-Inndata:
+Detajer...:
 }
 
