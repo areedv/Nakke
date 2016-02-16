@@ -305,8 +305,8 @@ if (valgtVar == 'UforetrygdPreOp') {
 	}
 if (valgtVar=='Utdanning') {
 	retn <- 'H'
-#	grtxt <- c('Grunnskole++, 7-10år','Real-, yrkes- el vg skole', #'Real-, yrkes-/yrkesfaglig vg skole',
-#				 'Allmennfaglig vg skole','Høyskole/universitet, <4 år','Høyskole/universitet, 4år+', 'Ukjent')
+	grtxt <- c('Grunnskole++, 7-10år','Real-, yrkes- el vg skole',
+				 'Allmennfaglig vg skole','Høyskole/universitet, <4 år','Høyskole/universitet, 4år+', 'Ukjent')
 	RegData$VariabelGr <- 9
 	indDum <- which(RegData$Utdanning %in% 1:5)
 	RegData$VariabelGr[indDum] <- RegData$Utdanning[indDum]
