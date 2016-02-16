@@ -2,11 +2,23 @@ Package: Nakke
 Type: Package
 Encoding: UTF-8
 Title: Resultattjenester for Degenerativ Nakke
+Description: Alle R-baserte resultattjenester på Rapporteket for Degenerativ
+    Nakke. Dette inkluderer R-funksjoner for analyse og visualisering, noweb-
+    filer (generere LaTeX-dokumenter) og evt. logofiler o.l. Kan også inkludere
+    kjørefiler og eksempeldatasett.
 Version: 0.1
 Date: 2016-02-10
 Author: Lena Ringstad Olsen, Nasjonalt Servicemiljo for Kvalitetsregistre, SKDE
 Maintainer: Lena Ringstad Olsen <lena.olsen@skde.no>
-Depends: R (>= 3.2.3)
-Description: More about what it does (maybe more than one line)
-License: GPL
+Depends:
+    R (>= 3.2.3),
+    rapbase
+License: GPL-2
 LazyData: TRUE
+Imports:
+    knitr,
+    xtable
+Suggests:
+    knitr
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1

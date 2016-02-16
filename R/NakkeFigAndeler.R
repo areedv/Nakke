@@ -20,7 +20,6 @@
 #' @param enhetsUtvalg - 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
 #' @export
 
-#' Trenger funksjonene LibFigFilType.R og NKRLibUtvalg.R
 FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2007-01-01', datoTil='3000-12-31',
 		minald=0, maxald=130, erMann='', tittel=1, outfile='',
 		reshID, enhetsUtvalg=1)	#sml=1, egenavd=1, plotType='S',libkat,
@@ -30,8 +29,6 @@ FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2007-01-01', dat
     RegData <- NakkeRegData()
   }
 
-#source(paste(libkat, 'LibFigFilType.R', sep=''), encoding="UTF-8")
-#source(paste(libkat, 'NakkeLibUtvalg.R', sep=''), encoding="UTF-8")
 
 #------------Gjøre utvalg-------------------------
 NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
@@ -405,7 +402,7 @@ if (valgtVar %in% c('Komorbiditet', 'KomplOpr', 'Kompl3mnd', 'OprIndik', 'OprInd
               CT = sum(RegData$RadiologiCt, na.rm=T), #length(indPareser),
               MR = sum(RegData$RadiologiMr, na.rm=T),
               Myelografi = sum(RegData$RadiologiMyelografi, na.rm=T),
-              RøntgenCcol = sum(RegData$RadiologiRtgCcol, na.rm=T)
+              RontgenCcol = sum(RegData$RadiologiRtgCcol, na.rm=T)
          )
          NVar<-rep(dim(RegData)[1], length(AntVar))
          grtxt <- c('CT', 'MR', 'Myelografi', 'Røntgen-Ccol')
