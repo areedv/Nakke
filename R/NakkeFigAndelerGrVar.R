@@ -58,7 +58,7 @@ utvalgTxt <- NakkeUtvalg$utvalgTxt
 if (valgtVar == 'LipidI63u80') {
 	#		'Hjerneinfarkt (I63) <= 80 år, levende utskrevet
 	RegData <- RegData[which(RegData$UtskrTil != 10), ] # RegData$Slagdiagnose==2 & RegData$Alder <=80
-	diagnose <- 2	#'I63'
+	diagnose <- 2	#I63
 	minald <- 18
 	maxald <- 80
 	RegData$Variabel[RegData$UtStatinerLipid==1] <- 1
@@ -297,7 +297,7 @@ if (valgtVar == 'UforetrygdPreOp') {
 if (valgtVar == 'Utdanning') {
 	#PasientSkjema. Andel med Utdanning 4 el 5
 	#Kode 1:5,9: 'Grunnskole++, 7-10år','Real-, yrkes- el vg skole', 'Allmennfaglig vg skole',
-			#'Høyskole/universitet, <4 år', 'Høyskole/universitet, 4år+', 'Ukjent'
+			#Høyskole/universitet, <4 år', 'Høyskole/universitet, 4år+', 'Ukjent'
 	RegData <- RegData[intersect(which(RegData$Utdanning %in% 1:5), which(RegData$PasientSkjemaStatus ==1)), ]
 	RegData$Variabel[which(RegData[ ,valgtVar] %in% 4:5)] <- 1
   	VarTxt <- 'med høyere utdanning'

@@ -283,7 +283,7 @@ if (valgtVar == 'UforetrygdPreOp') {
 if (valgtVar == 'Utdanning') {
 	#PasientSkjema. Andel med Utdanning 4 el 5
 	#Kode 1:5,9: 'Grunnskole++, 7-10år','Real-, yrkes- el vg skole', 'Allmennfaglig vg skole',
-			#'Høyskole/universitet, <4 år', 'Høyskole/universitet, 4år+', 'Ukjent'
+			#Høyskole/universitet, <4 år', 'Høyskole/universitet, 4år+', 'Ukjent'
 	RegData <- RegData[intersect(which(RegData$Utdanning %in% 1:5), which(RegData$PasientSkjemaStatus ==1)), ]
 	RegData$Variabel[which(RegData[ ,valgtVar] %in% 4:5)] <- 1
   	VarTxt <- 'med høyere utdanning'
@@ -366,7 +366,7 @@ cexleg <- 1	#Størrelse på legendtekst
 ymax <- min(119, 1.25*max(Andeler,na.rm=T))
 plot(Aartxt, AndelHoved,  font.main=1,  type='o', pch="'", col='white', #type='o',
 		xlim= c(Aartxt[1], max(Aartxt)), xaxt='n', frame.plot = FALSE,  #xaxp=c(min(Aartxt), max(Aartxt),length(Aartxt)-1)
-		cex=2, xlab='Innleggelsesår', ylab="Andel (%)", ylim=c(0,ymax), yaxs = 'i') 	#'Operasjonsår',
+		cex=2, xlab='Innleggelsesår', ylab="Andel (%)", ylim=c(0,ymax), yaxs = 'i') 	#Operasjonsår,
 
 #plot(Aartxt, Midt, xlim= c(xmin, xmax), ylim=c(ymin, ymax), type='n', frame.plot=FALSE, #ylim=c(ymin-0.05*ymax, ymax),
 #		#cex=0.8, cex.lab=0.9, cex.axis=0.9,
