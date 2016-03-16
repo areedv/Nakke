@@ -25,7 +25,7 @@
 #' @param maxald - alder, til og med
 #' @param erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 #' @param enhetsUtvalg - 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
-#' @param valgtVar - Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...
+#' @param valgtVar - Variabelen det skal vises resultat for.
 #'             Alder: Aldersfordeling
 #'             AntallNivaaOpr: Antall nivå operert
 #'             Antibiotika: Er det gitt antibiotikaprofylakse?
@@ -70,7 +70,7 @@ FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2012-01-01', dat
 
 # Preprosessere data
      if (preprosess){
-       RegData <- NGERPreprosess(RegData=RegData)
+       RegData <- NakkePreprosess(RegData=RegData)
      }
 
 

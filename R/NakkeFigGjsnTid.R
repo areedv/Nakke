@@ -10,6 +10,20 @@
 #'
 #' @inheritParams FigAndeler
 #' @param valgtMaal - 'Med' gir median, alt annet gir gjennomsnitt
+#' @param valgtVar - Variabelen det skal vises resultat for.
+#'             EMSendr12mnd: Forbedring av EMS hos myelopati-pasienter, 12 mnd.
+#'             EMSendr3mnd: Forbedring av EMS hos myelopati-pasienter, 3 mnd.
+#'             EQ5Dendr12mnd: Forbedring av EQ5D, 12 mnd.
+#'             EQ5Dendr3mnd: Forbedring av EQ5D, 3 mnd.
+#'             Eq5DScorePreOp: EQ5D, før operasjon
+#'
+#'             KnivtidTotalMin: total knivtid
+#'             LiggeDognPostop: liggetid etter operasjon
+#'             LiggeDognTotalt: antall liggedøgn, totalt
+#'             NDIscorePreOp: NDI før operasjon
+#'             NDIendr3mnd: Forbedring av NDI, 3 mnd. etter operasjon
+#'             NDIendr12mnd: Forbedring av NDI, 3 mnd. etter operasjon
+#'
 #' @export
 
 
@@ -18,48 +32,17 @@ FigGjsnTid <- function(RegData, outfile, valgtVar, erMann='',
 		valgtMaal='', enhetsUtvalg=1, hentData=0, reshID){
 
 
-#Inngangsdata:
-#		RegData - ei dataramme med variable fra spørring mot Nakkedatabasen
-#		libkat - sti til bibliotekkatalog
-#       outfile - navn på png-fil
-#		reshID - en avdelingsid, numerisk, må spesifiseres
-#		tittel - om man vil ha med tittel i figuren (standard:1) eller ikke.
-# 	Brukerstyrt i Jasper:
-#		valgtVar - Må velges: EQ5DEndr, Liggedogn, OswEndr, SmBeinEndr,  SmRyggEndr, EQ5DPre, OswTotPre, SmBePre, SmRyPre
-#		datoFra <- '2007-01-01'	Operasjonsdato, fra og med.
-#		datoTil <- '2013-05-25'	Operasjonsdato, til og med.
-#		erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
-#		minald - alder, fra og med
-#		maxald - alder, til og med
-#		valgtMaal - 'Med': Median eller Gjennomsnitt (standard, angis med alle andre verdier)
-#		valgtVar - Må velges...
-#		hentData - angir om data er tilgjengelig fra fil eller må hentes gjennom spørring
-#		enhetsUtvalg - 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
-# Trenger funksjonene LibFigFilType.R og SlagLibUtvalg.R
+	if (hentData == 1) {
+		RegData <- NakkeRegDataSQL()	#RegData <- NakkeLoadRegDataMinimal()
+	  }
 
-source(paste(libkat, 'LibFigFilType.R', sep=''), encoding="UTF-8")
-source(paste(libkat, 'NakkeLibUtvalg.R', sep=''), encoding="UTF-8")
-
-if (hentData == 1) {
-  library(RMySQL)
-  source(paste0(libkat, 'NakkeLoadRegData.R'))	#Denne er ikke laget
-  source(paste0(libkat, 'NakkeLoadRegDataMinimal.R'))
-  cat('\nLocal loading of RegData...\n')
-  RegData <- NakkeLoadRegDataMinimal()
-}
-
-NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
-		erMann=erMann)	#, tidlOp=tidlOp
-RegData <- NakkeUtvalg$RegData
-utvalgTxt <- NakkeUtvalg$utvalgTxt
+# Preprosessere data
+     if (preprosess){
+       RegData <- NakkePreprosess(RegData=RegData)
+     }
 
 
-#------------Gjøre utvalg-------------------------
-#Definerer registerspesifikke variable................
-#RegData$InnDato <- as.POSIXlt(RegData$OpDato, format="%d.%m.%Y")	#"%Y-%m-%d") # %H:%M:%S" )	#"%d.%m.%Y"	"%Y-%m-%d"
-#names(RegData)[which(names(RegData) == 'AvdReshID')] <- 'ReshId'
-#class(RegData$ReshId) <- 'numeric'
-#RegData$Aar <- as.numeric(RegData$OpAar)
+#----------- Figurparametre ------------------------------
 
 #retn <- 'V'		#Vertikal som standard. 'H' angis evt. for enkeltvariable
 grtxt <- ''		#Spesifiseres for hver enkelt variabel
@@ -192,13 +175,11 @@ if (grep('endr', valgtVar) != 1 ) {	#Søke på strengen "endr"
 		}
 
 
-#Tar ut de med manglende registrering av valgt variabel og gjør utvalg
-#RegData <- RegData[intersect(which(is.na(RegData$Variabel) == FALSE),
-#							 which(is.nan(RegData$Variabel) == FALSE)), ]
-#NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
-#                              erMann=erMann)	#, tidlOp=tidlOp
-#RegData <- NakkeUtvalg$RegData
-#utvalgTxt <- NakkeUtvalg$utvalgTxt
+#Gjør utvalg
+NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
+		erMann=erMann)	#, tidlOp=tidlOp
+RegData <- NakkeUtvalg$RegData
+utvalgTxt <- NakkeUtvalg$utvalgTxt
 
 
 indEgen1 <- match(reshID, RegData$ReshId)

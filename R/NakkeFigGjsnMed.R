@@ -6,6 +6,16 @@
 #'
 #' @inheritParams FigAndeler
 #' @param valgtMaal - 'Med' gir median, alt annet gir gjennomsnitt
+#' @param valgtVar - Variabelen det skal vises resultat for.
+#'             Alder: alder (år)
+#'             EMSscorePreOp: EMS hos Myelopatipasienter før
+#'             KnivtidTotalMin: total knivtid
+#'             NDIscorePreOp: NDI før operasjon
+#'             LiggeDognPostop: liggetid etter operasjon
+#'             LiggeDognTotalt: antall liggedøgn, totalt
+#'             NRSsmerteArmPreOp: NSR, arm før operasjon
+#'             NRSsmerteNakkePreOp: NSR, nakke før operasjon
+#'
 #' @export
 
 
@@ -13,13 +23,17 @@ FigMeanMed <- function(RegData, valgtVar, valgtMaal='Gjsn', datoFra='2012-04-01'
 		minald=0, maxald=130, erMann='', reshID, outfile='', hentData=0) {
 
 
-if (hentData == 1) {
-  library(RMySQL)
-  source(paste0(libkat, 'NakkeLoadRegData.R'))
-  source(paste0(libkat, 'NakkeLoadRegDataMinimal.R'))
-  cat('\nLocal loading of RegData...\n')
-  RegData <- NakkeLoadRegDataMinimal()
-}
+	if (hentData == 1) {
+		RegData <- NakkeRegDataSQL()	#RegData <- NakkeLoadRegDataMinimal()
+	  }
+
+# Preprosessere data
+     if (preprosess){
+       RegData <- NakkePreprosess(RegData=RegData)
+     }
+
+
+#----------- Figurparametre ------------------------------
 
 #Når bare skal sammenlikne med region trengs ikke data for hele landet:
 reshID <- as.numeric(reshID)

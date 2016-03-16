@@ -7,27 +7,56 @@
 #' Detajer:
 #'
 #' @inheritParams FigAndeler
+#' @param valgtVar - Variabelen det skal vises resultat for.
+#'             Alder: Aldersfordeling
+#'             AndreRelSykdommer: Andre sykdommer
+#'             Antibiotika: Fått antibiotika
+#'             Arbeidstaus12mnd: Mottar sykepenger, 12 mnd etter operasjon?
+#'             Arbeidstaus3mnd: Mottar sykepenger, 3 mnd etter operasjon?
+#'             ArbeidstausPreOp: Mottar sykepenger, preoperativt?
+#'             ASAgrad: ASA-grad > II
+#'             BMI: Pasienter med fedme
+#'             EnhverKompl3mnd: Alle komplikasjoner
+#'             ErstatningPreOp: Søkt/planlegger å søke erstatning
+#'             FornoydBeh12mnd: Fornøyde pasienter, 12 mnd.
+#'             FornoydBeh3mnd: Fornøyde pasienter, 3 mnd.
+#'             KomplinfekDyp3mnd: Pasientrapportert dyp infeksjon, 3 mnd.
+#'             KomplinfekOverfl3mnd: Overfladisk infeksjon, 3 mnd.
+#'             KomplStemme3mnd: Stemmevansker, 3 mnd.
+#'             KomplSvelging3mnd: Svelgvansker, 3 mnd.
+#'             Misfor12mnd: Misfornøyde pasienter, 12 mnd.
+#'             Misfor3mnd: Misfornøyde pasienter, 3 mnd.
+#'             NDIendr12mnd: Minst 30% forbedring av NDI, 12 mnd.
+#'             NRSsmerteArmEndr12mnd: Minst 30% forbedring av NSR-arm, 12 mnd.
+#'             NytteOpr12mnd: Klart bedre, 12 mnd.
+#'             NytteOpr3mnd: Klart bedre, 3 mnd.
+#'             Verre12mnd: Klart verre, 12 mnd.
+#'             Verre3mnd. Klart verre, 3 mnd.
+#'             OprIndikMyelopati: Operasjonsårsak, Myelopati
+#'             Roker: Røykere
+#'             Saardren: Andel som får sårdren
+#'             SmertestillPreOp: Bruker smertestillende, preop.
+#'             SymptVarighetNakkeHode: Varighet av hode-/nakkesmerter over 1 år
+#'             SymptVarighetSmerterUker: Varighet av smerter minst 1 år
+#'             UforetrygdPreOp: Søkt eller planlegger å søke uføretrygd?
+#'             Utdanning: Andel høyskole-/universitetsutdannede
+#'
 #' @export
 
-FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2013-01-01', datoTil='3000-12-31', enhetsUtvalg=0,
+FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-12-31', enhetsUtvalg=0,
                             minald=0, maxald=130, erMann='', hentData=0, tittel=1, reshID, outfile='') {
 
-if (hentData == 1) {
-  library(RMySQL)
-  source(paste0(libkat, 'NakkeLoadRegData.R'))	#Denne er ikke laget
-  source(paste0(libkat, 'NakkeLoadRegDataMinimal.R'))
-  cat('\nLocal loading of RegData...\n')
-  RegData <- NakkeLoadRegDataMinimal()
-}
+	if (hentData == 1) {
+		RegData <- NakkeRegDataSQL()	#RegData <- NakkeLoadRegDataMinimal()
+	  }
 
-NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
-		erMann=erMann)	#, tidlOp=tidlOp
-RegData <- NakkeUtvalg$RegData
-utvalgTxt <- NakkeUtvalg$utvalgTxt
+# Preprosessere data
+     if (preprosess){
+       RegData <- NakkePreprosess(RegData=RegData)
+     }
 
-#Definerer registerspesifikke variable................
-RegData$Region <- RegData$RHF
 
+#----------- Figurparametre ------------------------------
 cexShNavn <- 0.85
 
 #Når bare skal sammenlikne med sykehusgruppe eller region, eller ikke sammenlikne,

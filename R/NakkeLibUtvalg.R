@@ -1,12 +1,11 @@
-#' Funksjon som gjør utvalg av registreringene for Nakke
+#' Funksjon som gjør utvalg i datagrunnlaget til registreringene for Nakke
 #'
-#'Funksjon som gjør utvalg av dataene, returnerer det reduserte datasettet og utvalgsteksten.
-#' Inndata:
-#' @param erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
-#' @param minald - alder, fra og med
-#' @param maxald - alder, til og med
-#' @param datoFra - Operasjonsdato, fra og med. Standard: '2012-01-01'   
-#' @param datoTil - Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)
+#' Funksjon som gjør utvalg av dataene, returnerer det reduserte datasettet og utvalgsteksten.
+#' 
+#' @inheritParams FigAndeler
+#' @param fargepalett: Velge fargepalett, standard:BlaaOff ("offentliggjøringsfargene")
+#'
+#' @export
 
 NakkeLibUtvalg <- function(RegData, datoFra, datoTil, minald=0, maxald=130, erMann='',
 		tidlOp='', fargepalett='BlaaOff')	#insttype, 

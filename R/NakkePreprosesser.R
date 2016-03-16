@@ -7,6 +7,7 @@
 #' @return RegData En dataramme med det preprosesserte datasettet
 #'
 #' @export
+
 NGERPreprosess <- function(RegData=RegData)
 {
   #Kun ferdigstilte registreringer:
