@@ -1,6 +1,7 @@
-#' Søylediagram, horisontalt eller vertikalt, som viser andeler av ulike variable:
+#' Søylediagram, horisontalt eller vertikalt, som viser andeler av valgt variabel.
 #'
-#' Her kommer muligens mer forklaring...?
+#' Søylediagrammet viser fordelinga til den valgte variabelen. Søylene er horisontale eller vertikale
+#' avhengig av hvor stor plass kategorinavnet til søyla tar.
 #'
 #' Detajer...:
 #'
@@ -11,12 +12,12 @@
 #' funksjoner der data allerede er tilgjengelig.
 #' @param outfile - navn på fil figuren skrives ned til
 #' @param reshID - avdelingsid (reshID) for egen avdeling,
-#' @param hentData - angir om funksjonen skal kjøre spørring for å hente data eller ikke. 
+#' @param hentData - angir om funksjonen skal kjøre spørring for å hente data eller ikke.
 #'					0: ikke kjør (standard)
 #'					1: kjør
 #' @param preprosess - Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
 #'						TRUE (standard) / FALSE
-#' @param tittel - om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter. 
+#' @param tittel - om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
 #'					0: ikke vis tittel, 1: vis tittel (standard)
 #' @param datoFra - Operasjonsdato, fra og med. Standard: '2012-01-01'
 #' @param datoTil - Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)
@@ -25,6 +26,37 @@
 #' @param erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 #' @param enhetsUtvalg - 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
 #' @param valgtVar - Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...
+#'             Alder: Aldersfordeling
+#'             AntallNivaaOpr: Antall nivå operert
+#'             Antibiotika: Er det gitt antibiotikaprofylakse?
+#'             Arbeidstaus12mnd: Arbeidsstatus 12 mnd. etter operasjon
+#'             Arbeidstaus3mnd: Arbeidsstatus 3 mnd. etter operasjon
+#'             ArbeidstausPreOp: Arbeidsstatus før operasjon
+#'             ASAgrad: ASA-grad
+#'             BMI: Pasientenes BMI (Body Mass Index)
+#'             EqAngstPreOp: Helsetilstand, Angst
+#'             ErstatningPreOp: Søkt erstatning?
+#'             FornoydBeh12mnd: Fornøydhet med behandlinga på sykehuset, 12 mnd
+#'             FornoydBeh3mnd: Fornøydhet med behandlinga på sykehuset, 3 mnd
+#'             OperasjonsKategori: Hastegrad
+#'             LiggeDognPostop: Antall liggedøgn postoperativt
+#'             LiggeDognTotalt: Totalt antall liggedøgn
+#'             Morsmal: Morsmål
+#'             NytteOpr12mnd: Nytte av operasjon, 12 mnd
+#'             NytteOpr3mnd: Nytte av operasjon, 3 mnd
+#'             OprIndikPareseGrad: Paresegrad før operasjon
+#'             Roker: Røyker pasienten?
+#'             Saardren: Har pasienten fått sårdren?
+#'             SivilStatus: Sivilstatus
+#'             SmertestillBrukPreOp: Hyppighet av smertestillende før operasjonen
+#'             Snuser: Snuser pasienten?
+#'             SymptVarighetArmer: Varighet av utstrålende armsmerter
+#'             SymptVarighetNakkeHode: Varighet av nakke-/hodesmerter
+#'             TidlOpr: Er pasienten tidligere operert?
+#'             TidlOprAntall: Antall tidligere operasjoner
+#'             UforetrygdPreOp: Søkt uføretrygd?
+#'             Utdanning: Utdanningsnivå
+#'
 #' @export
 
 FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2012-01-01', datoTil='3000-12-31',
@@ -41,7 +73,7 @@ FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2012-01-01', dat
        RegData <- NGERPreprosess(RegData=RegData)
      }
 
-	 
+
 #----------- Figurparametre ------------------------------
 
 retn <- 'V'		#Vertikal som standard. 'H' angis evt. for enkeltvariable
@@ -324,7 +356,7 @@ if (valgtVar=='Utdanning') {
 
 #------------Gjøre utvalg-------------------------
 NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
-		erMann=erMann)	
+		erMann=erMann)
 RegData <- NakkeUtvalg$RegData
 utvalgTxt <- NakkeUtvalg$utvalgTxt
 
