@@ -12,17 +12,6 @@ NakkeLibUtvalg <- function(RegData, datoFra, datoTil, minald=0, maxald=130, erMa
 		tidlOp='', fargepalett='BlaaOff')	#insttype, 
 {
 
-#Definerer registerspesifikke variable. Dette må gjøres i funksjonen som henter data
-RegData$erMann <- 0
-RegData$erMann[RegData$Kjonn=='Mann'] <- 1
-RegData$InnDato <- as.POSIXlt(RegData$OprDato, format="%Y-%m-%d")	#"%Y-%m-%d") # %H:%M:%S" )	#"%d.%m.%Y"	"%Y-%m-%d"
-names(RegData)[which(names(RegData) == 'AVD_RESH')] <- 'ReshId'
-class(RegData$ReshId) <- 'numeric'
-RegData$Aar <- 1900 + strptime(RegData$InnDato, format="%Y")$year
-
-
-#Utvalg..........
-RegData <- RegData[which(RegData$LegeskjemaStatus == 1), ]  #Vi ønsker kun ferdigstilte legeskjema
 
 Ninn <- dim(RegData)[1]
 indAld <- which(RegData$Alder >= minald & RegData$Alder <= maxald)

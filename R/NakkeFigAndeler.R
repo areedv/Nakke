@@ -11,31 +11,38 @@
 #' funksjoner der data allerede er tilgjengelig.
 #' @param outfile - navn på fil figuren skrives ned til
 #' @param reshID - avdelingsid (reshID) for egen avdeling,
-#' @param valgtVar - Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...
-#' @param erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
-#' @param minald - alder, fra og med
-#' @param maxald - alder, til og med
+#' @param hentData - angir om funksjonen skal kjøre spørring for å hente data eller ikke. 
+#'					0: ikke kjør (standard)
+#'					1: kjør
+#' @param preprosess - Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
+#'						TRUE (standard) / FALSE
+#' @param tittel - om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter. 
+#'					0: ikke vis tittel, 1: vis tittel (standard)
 #' @param datoFra - Operasjonsdato, fra og med. Standard: '2012-01-01'
 #' @param datoTil - Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)
+#' @param minald - alder, fra og med
+#' @param maxald - alder, til og med
+#' @param erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 #' @param enhetsUtvalg - 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
+#' @param valgtVar - Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...
 #' @export
 
-FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2013-01-01', datoTil='3000-12-31',
-		minald=0, maxald=130, erMann='', tittel=1, outfile='',
-		reshID, enhetsUtvalg=1)	#sml=1, egenavd=1, plotType='S',libkat,
+FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2012-01-01', datoTil='3000-12-31',
+		minald=0, maxald=130, erMann='', tittel=1, outfile='', hentData=0, preprosess=TRUE,
+		reshID, enhetsUtvalg=1)
 {
 
- if (hentData == 1) {
-    RegData <- NakkeRegData()
-  }
+	if (hentData == 1) {
+		RegData <- NakkeRegDataSQL()
+	  }
 
+# Preprosessere data
+     if (preprosess){
+       RegData <- NGERPreprosess(RegData=RegData)
+     }
 
-#------------Gjøre utvalg-------------------------
-NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
-		erMann=erMann)	#, tidlOp=tidlOp
-RegData <- NakkeUtvalg$RegData
-utvalgTxt <- NakkeUtvalg$utvalgTxt
-
+	 
+#----------- Figurparametre ------------------------------
 
 retn <- 'V'		#Vertikal som standard. 'H' angis evt. for enkeltvariable
 grtxt <- ''		#Spesifiseres for hver enkelt variabel
@@ -313,6 +320,14 @@ if (valgtVar=='Utdanning') {
 	RegData$VariabelGr <- factor(RegData$VariabelGr, levels = c(1:5,9))
 	TittelUt <- 'Utdanningsnivå'
 }
+
+
+#------------Gjøre utvalg-------------------------
+NakkeUtvalg <- NakkeLibUtvalg(RegData=RegData, datoFra=datoFra, datoTil=datoTil, minald=minald, maxald=maxald,
+		erMann=erMann)	
+RegData <- NakkeUtvalg$RegData
+utvalgTxt <- NakkeUtvalg$utvalgTxt
+
 
 
 #Generere hovedgruppe og sammenlikningsgruppe
