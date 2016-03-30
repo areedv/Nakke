@@ -5,8 +5,8 @@
 #' Funksjonen er delvis skrevet for å kunne brukes til andre grupperingsvariable enn sykehus
 #'
 #' @inheritParams FigAndeler
-#' @param valgtMaal - 'Med' gir median, alt annet gir gjennomsnitt
-#' @param valgtVar - Variabelen det skal vises resultat for.
+#' @param valgtMaal Sentralmål 'Med' gir median, alt annet gir gjennomsnitt
+#' @param valgtVar Variabelen det skal vises resultat for.
 #'             Alder: alder (år)
 #'             EMSscorePreOp: EMS hos Myelopatipasienter før
 #'             KnivtidTotalMin: total knivtid
@@ -16,11 +16,13 @@
 #'             NRSsmerteArmPreOp: NSR, arm før operasjon
 #'             NRSsmerteNakkePreOp: NSR, nakke før operasjon
 #'
+#' @return Figur med...
+#'
 #' @export
 
 
-FigMeanMed <- function(RegData, valgtVar, valgtMaal='Gjsn', datoFra='2012-04-01', datoTil='2050-12-31',
-		minald=0, maxald=130, erMann='', reshID, outfile='', hentData=0) {
+FigGjsnMed <- function(RegData, valgtVar, valgtMaal='Gjsn', datoFra='2012-04-01', datoTil='2050-12-31',
+		minald=0, maxald=130, erMann='', reshID, outfile='', hentData=0, preprosess=TRUE) {
 
 
 	if (hentData == 1) {

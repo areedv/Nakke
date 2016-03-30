@@ -1,14 +1,14 @@
 #' Funksjon som gjør utvalg i datagrunnlaget til registreringene for Nakke
 #'
 #' Funksjon som gjør utvalg av dataene, returnerer det reduserte datasettet og utvalgsteksten.
-#' 
+#'
 #' @inheritParams FigAndeler
-#' @param fargepalett: Velge fargepalett, standard:BlaaOff ("offentliggjøringsfargene")
+#' @param fargepalett - Velge fargepalett, standard:BlaaOff ("offentliggjøringsfargene")
 #'
 #' @export
 
 NakkeLibUtvalg <- function(RegData, datoFra, datoTil, minald=0, maxald=130, erMann='',
-		tidlOp='', fargepalett='BlaaOff')	#insttype, 
+		fargepalett='BlaaOff')	#insttype,
 {
 
 
@@ -25,15 +25,15 @@ TidlOprtxt <-	c('Tidl. operert samme nivå', 'Tidl. operert annet nivå', 'Tidl.
 
 N <- dim(RegData)[1]
 
-utvalgTxt <- c(paste('Operasjonsdato: ', if (N>0) {min(RegData$InnDato, na.rm=T)} else {datoFra}, 
+utvalgTxt <- c(paste('Operasjonsdato: ', if (N>0) {min(RegData$InnDato, na.rm=T)} else {datoFra},
 			' til ', if (N>0) {max(RegData$InnDato, na.rm=T)} else {datoTil}, sep='' ),
-	if ((minald>0) | (maxald<130)) {paste('Pasienter fra ', if (N>0) {min(RegData$Alder, na.rm=T)} else {minald}, 
+	if ((minald>0) | (maxald<130)) {paste('Pasienter fra ', if (N>0) {min(RegData$Alder, na.rm=T)} else {minald},
 						' til ', if (N>0) {max(RegData$Alder, na.rm=T)} else {maxald}, ' år', sep='')},
 	if (erMann %in% 0:1) {paste('Kjønn: ', c('Kvinner', 'Menn')[erMann+1], sep='')}
 #	if (tidlOp %in% 1:4) {TidlOprtxt[tidlOp]}
 	)
-	
+
 
 UtData <- list(RegData=RegData, utvalgTxt=utvalgTxt, fargepalett=fargepalett) #GronnHNpms624,
-return(invisible(UtData)) 
+return(invisible(UtData))
 }

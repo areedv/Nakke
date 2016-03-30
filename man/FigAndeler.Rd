@@ -10,76 +10,73 @@ FigAndeler(RegData, valgtVar, datoFra = "2012-01-01",
   enhetsUtvalg = 1)
 }
 \arguments{
-\item{RegData}{- ei dataramme med alle nødvendige variable fra registeret}
+\item{RegData}{Dataramme med alle nødvendige variable fra registeret}
 
-\item{valgtVar}{- Variabelen det skal vises resultat for.
-Alder: Aldersfordeling
-AntallNivaaOpr: Antall nivå operert
-Antibiotika: Er det gitt antibiotikaprofylakse?
-Arbeidstaus12mnd: Arbeidsstatus 12 mnd. etter operasjon
-Arbeidstaus3mnd: Arbeidsstatus 3 mnd. etter operasjon
-ArbeidstausPreOp: Arbeidsstatus før operasjon
-ASAgrad: ASA-grad
-BMI: Pasientenes BMI (Body Mass Index)
-EqAngstPreOp: Helsetilstand, Angst
-ErstatningPreOp: Søkt erstatning?
-FornoydBeh12mnd: Fornøydhet med behandlinga på sykehuset, 12 mnd
-FornoydBeh3mnd: Fornøydhet med behandlinga på sykehuset, 3 mnd
-OperasjonsKategori: Hastegrad
-LiggeDognPostop: Antall liggedøgn postoperativt
-LiggeDognTotalt: Totalt antall liggedøgn
-Morsmal: Morsmål
-NytteOpr12mnd: Nytte av operasjon, 12 mnd
-NytteOpr3mnd: Nytte av operasjon, 3 mnd
-OprIndikPareseGrad: Paresegrad før operasjon
-Roker: Røyker pasienten?
-Saardren: Har pasienten fått sårdren?
-SivilStatus: Sivilstatus
-SmertestillBrukPreOp: Hyppighet av smertestillende før operasjonen
-Snuser: Snuser pasienten?
-SymptVarighetArmer: Varighet av utstrålende armsmerter
-SymptVarighetNakkeHode: Varighet av nakke-/hodesmerter
-TidlOpr: Er pasienten tidligere operert?
-TidlOprAntall: Antall tidligere operasjoner
-UforetrygdPreOp: Søkt uføretrygd?
-Utdanning: Utdanningsnivå}
+\item{valgtVar}{Variabelen det skal vises resultat for.
+            Alder: Aldersfordeling
+            AntallNivaaOpr: Antall nivå operert
+            Antibiotika: Er det gitt antibiotikaprofylakse?
+            Arbeidstaus12mnd: Arbeidsstatus 12 mnd. etter operasjon
+            Arbeidstaus3mnd: Arbeidsstatus 3 mnd. etter operasjon
+            ArbeidstausPreOp: Arbeidsstatus før operasjon
+            ASAgrad: ASA-grad
+            BMI: Pasientenes BMI (Body Mass Index)
+            EqAngstPreOp: Helsetilstand, Angst
+            ErstatningPreOp: Søkt erstatning?
+            FornoydBeh12mnd: Fornøydhet med behandlinga på sykehuset, 12 mnd
+            FornoydBeh3mnd: Fornøydhet med behandlinga på sykehuset, 3 mnd
+            OperasjonsKategori: Hastegrad
+            LiggeDognPostop: Antall liggedøgn postoperativt
+            LiggeDognTotalt: Totalt antall liggedøgn
+            Morsmal: Morsmål
+            NytteOpr12mnd: Nytte av operasjon, 12 mnd
+            NytteOpr3mnd: Nytte av operasjon, 3 mnd
+            OprIndikPareseGrad: Paresegrad før operasjon
+            Roker: Røyker pasienten?
+            Saardren: Har pasienten fått sårdren?
+            SivilStatus: Sivilstatus
+            SmertestillBrukPreOp: Hyppighet av smertestillende før operasjonen
+            Snuser: Snuser pasienten?
+            SymptVarighetArmer: Varighet av utstrålende armsmerter
+            SymptVarighetNakkeHode: Varighet av nakke-/hodesmerter
+            TidlOpr: Er pasienten tidligere operert?
+            TidlOprAntall: Antall tidligere operasjoner
+            UforetrygdPreOp: Søkt uføretrygd?
+            Utdanning: Utdanningsnivå
 
-\item{datoFra}{- Operasjonsdato, fra og med. Standard: '2012-01-01'}
+Detajer...:}
 
-\item{datoTil}{- Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
+\item{datoFra}{Operasjonsdato, fra og med. Standard: '2012-01-01'}
 
-\item{minald}{- alder, fra og med}
+\item{datoTil}{Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
 
-\item{maxald}{- alder, til og med}
+\item{minald}{Alder, fra og med}
 
-\item{erMann}{- kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
+\item{maxald}{Alder, til og med}
 
-\item{tittel}{- om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
+\item{erMann}{Kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
+
+\item{tittel}{Om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
 0: ikke vis tittel, 1: vis tittel (standard)}
 
-\item{outfile}{- navn på fil figuren skrives ned til}
+\item{outfile}{Navn på fil figuren skrives ned til}
 
-\item{hentData}{- Settes til 1 (standard) om det skal spørres etter data fra funksjonen.
-Settes til en annen verdi om data leveres til funksjonen gjennom 'RegData',
-eksempelvis ved bruk av eksempeldatasettet eller ved kall fra andre
-funksjoner der data allerede er tilgjengelig.}
-
-\item{preprosess}{- Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
-TRUE (standard) / FALSE}
-
-\item{reshID}{- avdelingsid (reshID) for egen avdeling,}
-
-\item{enhetsUtvalg}{- 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet}
-
-\item{hentData}{- angir om funksjonen skal kjøre spørring for å hente data eller ikke.
+\item{hentData}{Angir om funksjonen skal kjøre spørring for å hente data eller ikke.
 0: ikke kjør (standard)
 1: kjør}
+
+\item{preprosess}{Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
+TRUE (standard) / FALSE}
+
+\item{reshID}{Avdelingsid (reshID) for egen avdeling,}
+
+\item{enhetsUtvalg}{Sammenlikning eller ikke: 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet}
+}
+\value{
+En figur med søylediagram (fordeling) av ønsket variabel
 }
 \description{
 Søylediagrammet viser fordelinga til den valgte variabelen. Søylene er horisontale eller vertikale
 avhengig av hvor stor plass kategorinavnet til søyla tar.
-}
-\details{
-Detajer...:
 }
 

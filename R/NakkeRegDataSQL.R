@@ -4,10 +4,11 @@
 #'
 #' @inheritParams FigAndeler
 #'
-#' @return RegData data frame
+#' @return Henter dataramma RegData for Degenerativ Nakke
+#'
 #' @export
 #'
-NGERHentRegData <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
+NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 
   registryName <- "Nakke"
   dbType <- "mysql"

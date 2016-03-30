@@ -3,29 +3,23 @@
 #' Søylediagrammet viser fordelinga til den valgte variabelen. Søylene er horisontale eller vertikale
 #' avhengig av hvor stor plass kategorinavnet til søyla tar.
 #'
-#' Detajer...:
-#'
-#' @param RegData - ei dataramme med alle nødvendige variable fra registeret
-#' @param hentData - Settes til 1 (standard) om det skal spørres etter data fra funksjonen.
-#' Settes til en annen verdi om data leveres til funksjonen gjennom 'RegData',
-#' eksempelvis ved bruk av eksempeldatasettet eller ved kall fra andre
-#' funksjoner der data allerede er tilgjengelig.
-#' @param outfile - navn på fil figuren skrives ned til
-#' @param reshID - avdelingsid (reshID) for egen avdeling,
-#' @param hentData - angir om funksjonen skal kjøre spørring for å hente data eller ikke.
+#' @param RegData Dataramme med alle nødvendige variable fra registeret
+#' @param outfile Navn på fil figuren skrives ned til
+#' @param reshID Avdelingsid (reshID) for egen avdeling,
+#' @param hentData Angir om funksjonen skal kjøre spørring for å hente data eller ikke.
 #'					0: ikke kjør (standard)
 #'					1: kjør
-#' @param preprosess - Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
+#' @param preprosess Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
 #'						TRUE (standard) / FALSE
-#' @param tittel - om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
+#' @param tittel Om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
 #'					0: ikke vis tittel, 1: vis tittel (standard)
-#' @param datoFra - Operasjonsdato, fra og med. Standard: '2012-01-01'
-#' @param datoTil - Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)
-#' @param minald - alder, fra og med
-#' @param maxald - alder, til og med
-#' @param erMann - kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
-#' @param enhetsUtvalg - 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
-#' @param valgtVar - Variabelen det skal vises resultat for.
+#' @param datoFra Operasjonsdato, fra og med. Standard: '2012-01-01'
+#' @param datoTil Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)
+#' @param minald Alder, fra og med
+#' @param maxald Alder, til og med
+#' @param erMann Kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
+#' @param enhetsUtvalg Sammenlikning eller ikke: 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet
+#' @param valgtVar Variabelen det skal vises resultat for.
 #'             Alder: Aldersfordeling
 #'             AntallNivaaOpr: Antall nivå operert
 #'             Antibiotika: Er det gitt antibiotikaprofylakse?
@@ -56,6 +50,10 @@
 #'             TidlOprAntall: Antall tidligere operasjoner
 #'             UforetrygdPreOp: Søkt uføretrygd?
 #'             Utdanning: Utdanningsnivå
+#'
+#' Detajer...:
+#'
+#' @return En figur med søylediagram (fordeling) av ønsket variabel
 #'
 #' @export
 

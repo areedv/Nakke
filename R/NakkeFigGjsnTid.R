@@ -8,8 +8,8 @@
 #' EQ5D: Skala fra -0.594 tl 1, jo høyere jo bedre.
 #' Oswestry: Skala fra 0 til 100, hvor lavest er friskest
 #'
+#' @param valgtMaal Sentralmål: 'Med' gir median, alt annet gir gjennomsnitt
 #' @inheritParams FigAndeler
-#' @param valgtMaal - 'Med' gir median, alt annet gir gjennomsnitt
 #' @param valgtVar - Variabelen det skal vises resultat for.
 #'             EMSendr12mnd: Forbedring av EMS hos myelopati-pasienter, 12 mnd.
 #'             EMSendr3mnd: Forbedring av EMS hos myelopati-pasienter, 3 mnd.
@@ -23,12 +23,14 @@
 #'             NDIendr3mnd: Forbedring av NDI, 3 mnd. etter operasjon
 #'             NDIendr12mnd: Forbedring av NDI, 3 mnd. etter operasjon
 #'
+#'@return Figur med...
+#'
 #' @export
 
 
 FigGjsnTid <- function(RegData, outfile, valgtVar, erMann='',
 		minald=0, maxald=130, tittel=1, datoFra='2007-01-01', datoTil='3000-01-01',
-		valgtMaal='', enhetsUtvalg=1, hentData=0, reshID){
+		valgtMaal='', enhetsUtvalg=1, hentData=0, preprosess=TRUE, reshID){
 
 
 	if (hentData == 1) {

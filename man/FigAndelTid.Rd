@@ -6,71 +6,79 @@
 \usage{
 FigAndelTid(RegData, valgtVar, datoFra = "2013-01-01",
   datoTil = "3000-12-31", minald = 0, maxald = 130, erMann = "",
-  tittel = 1, reshID, outfile = "", enhetsUtvalg = 1, hentData = 1)
+  tittel = 1, reshID, outfile = "", enhetsUtvalg = 1, preprosess = TRUE,
+  hentData = 0)
 }
 \arguments{
-\item{RegData}{- ei dataramme med alle nødvendige variable fra registeret}
+\item{RegData}{Dataramme med alle nødvendige variable fra registeret}
 
-\item{valgtVar}{- Variabelen det skal vises resultat for.
+\item{valgtVar}{Variabelen det skal vises resultat for.
 Alder: Aldersfordeling
-AntallNivaaOpr: Antall nivå operert
-Antibiotika: Er det gitt antibiotikaprofylakse?
-Arbeidstaus12mnd: Arbeidsstatus 12 mnd. etter operasjon
-Arbeidstaus3mnd: Arbeidsstatus 3 mnd. etter operasjon
-ArbeidstausPreOp: Arbeidsstatus før operasjon
-ASAgrad: ASA-grad
-BMI: Pasientenes BMI (Body Mass Index)
-EqAngstPreOp: Helsetilstand, Angst
-ErstatningPreOp: Søkt erstatning?
-FornoydBeh12mnd: Fornøydhet med behandlinga på sykehuset, 12 mnd
-FornoydBeh3mnd: Fornøydhet med behandlinga på sykehuset, 3 mnd
-OperasjonsKategori: Hastegrad
-LiggeDognPostop: Antall liggedøgn postoperativt
-LiggeDognTotalt: Totalt antall liggedøgn
-Morsmal: Morsmål
-NytteOpr12mnd: Nytte av operasjon, 12 mnd
-NytteOpr3mnd: Nytte av operasjon, 3 mnd
-OprIndikPareseGrad: Paresegrad før operasjon
-Roker: Røyker pasienten?
-Saardren: Har pasienten fått sårdren?
-SivilStatus: Sivilstatus
-SmertestillBrukPreOp: Hyppighet av smertestillende før operasjonen
-Snuser: Snuser pasienten?
-SymptVarighetArmer: Varighet av utstrålende armsmerter
-SymptVarighetNakkeHode: Varighet av nakke-/hodesmerter
-TidlOpr: Er pasienten tidligere operert?
-TidlOprAntall: Antall tidligere operasjoner
-UforetrygdPreOp: Søkt uføretrygd?
-Utdanning: Utdanningsnivå}
+AndreRelSykdommer: Andre sykdommer
+Antibiotika: Fått antibiotika
+Arbeidstaus12mnd: Mottar sykepenger, 12 mnd etter operasjon?
+Arbeidstaus3mnd: Mottar sykepenger, 3 mnd etter operasjon?
+ArbeidstausPreOp: Mottar sykepenger, preoperativt?
+ASAgrad: ASA-grad > II
+BMI: Pasienter med fedme
+EnhverKompl3mnd: Alle komplikasjoner
+ErstatningPreOp: Søkt/planlegger å søke erstatning
+FornoydBeh12mnd: Fornøyde pasienter, 12 mnd.
+FornoydBeh3mnd: Fornøyde pasienter, 3 mnd.
+KomplinfekDyp3mnd: Pasientrapportert dyp infeksjon, 3 mnd.
+KomplinfekOverfl3mnd: Overfladisk infeksjon, 3 mnd.
+KomplStemme3mnd: Stemmevansker, 3 mnd.
+KomplSvelging3mnd: Svelgvansker, 3 mnd.
+Misfor12mnd: Misfornøyde pasienter, 12 mnd.
+Misfor3mnd: Misfornøyde pasienter, 3 mnd.
+NytteOpr12mnd: Klart bedre, 12 mnd.
+NytteOpr3mnd: Klart bedre, 3 mnd.
+OprIndikMyelopati: Operasjonsårsak, Myelopati
+OprIndikSmerter: Operasjonsårsak, Smerter
+PerOpEnhverKompl: Komplikasjoner ved operasjon
+Roker: Røykere
+Saardren: Andel som får sårdren
+SmertestillPreOp: Bruker smertestillende, preop.
+SymptVarighetNakkeHode: Varighet av hode-/nakkesmerter over 1 år
+SymptVarighetSmerterUker: Varighet av smerter minst 1 år
+UforetrygdPreOp: Søkt eller planlegger å søke uføretrygd?
+Utdanning: Andel høyskole-/universitetsutdannede
+Verre12mnd: Klart verre, 12 mnd.
+Verre3mnd. Klart verre, 3 mnd.}
 
-\item{datoFra}{- Operasjonsdato, fra og med. Standard: '2012-01-01'}
+\item{datoFra}{Operasjonsdato, fra og med. Standard: '2012-01-01'}
 
-\item{datoTil}{- Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
+\item{datoTil}{Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
 
-\item{minald}{- alder, fra og med}
+\item{minald}{Alder, fra og med}
 
-\item{maxald}{- alder, til og med}
+\item{maxald}{Alder, til og med}
 
-\item{erMann}{- kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
+\item{erMann}{Kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
 
-\item{tittel}{- om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
+\item{tittel}{Om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
 0: ikke vis tittel, 1: vis tittel (standard)}
 
-\item{reshID}{- avdelingsid (reshID) for egen avdeling,}
+\item{reshID}{Avdelingsid (reshID) for egen avdeling,}
 
-\item{outfile}{- navn på fil figuren skrives ned til}
+\item{outfile}{Navn på fil figuren skrives ned til}
 
-\item{enhetsUtvalg}{- 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet}
+\item{enhetsUtvalg}{Sammenlikning eller ikke: 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet}
 
-\item{hentData}{- Settes til 1 (standard) om det skal spørres etter data fra funksjonen.
-Settes til en annen verdi om data leveres til funksjonen gjennom 'RegData',
-eksempelvis ved bruk av eksempeldatasettet eller ved kall fra andre
-funksjoner der data allerede er tilgjengelig.}
+\item{preprosess}{Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
+TRUE (standard) / FALSE}
+
+\item{hentData}{Angir om funksjonen skal kjøre spørring for å hente data eller ikke.
+0: ikke kjør (standard)
+1: kjør}
+}
+\value{
+Figur med ...
 }
 \description{
 Funksjon som genererer en figur med andeler av en variabel for hvert år.
 }
 \details{
-Detaljer:
+Detaljer
 }
 

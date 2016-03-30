@@ -2,10 +2,10 @@
 #'
 #' Funksjon som genererer en figur med andeler av en variabel for hvert år.
 #'
-#' Detaljer:
+#' Detaljer
 #'
 #' @inheritParams FigAndeler
-#' #' @param valgtVar - Variabelen det skal vises resultat for.
+#' @param valgtVar Variabelen det skal vises resultat for.
 #'             Alder: Aldersfordeling
 #'             AndreRelSykdommer: Andre sykdommer
 #'             Antibiotika: Fått antibiotika
@@ -38,13 +38,15 @@
 #'             Utdanning: Andel høyskole-/universitetsutdannede
 #'             Verre12mnd: Klart verre, 12 mnd.
 #'             Verre3mnd. Klart verre, 3 mnd.
-
+#'
+#' @return Figur med ...
+#'
 #' @export
 
 
 FigAndelTid <- function(RegData, valgtVar, datoFra='2013-01-01', datoTil='3000-12-31',
                         minald=0, maxald=130, erMann='', tittel=1, reshID, outfile='',
-                        enhetsUtvalg=1, hentData=1) {
+                        enhetsUtvalg=1, preprosess=TRUE, hentData=0) {
 
 
      if (hentData == 1) {

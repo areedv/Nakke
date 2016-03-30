@@ -4,10 +4,9 @@
 #' f.eks. sykehus.
 #' Funksjonen er delvis skrevet for å kunne brukes til andre grupperingsvariable enn sykehus
 #'
-#' Detajer:
 #'
 #' @inheritParams FigAndeler
-#' @param valgtVar - Variabelen det skal vises resultat for.
+#' @param valgtVar Variabelen det skal vises resultat for.
 #'             Alder: Aldersfordeling
 #'             AndreRelSykdommer: Andre sykdommer
 #'             Antibiotika: Fått antibiotika
@@ -41,10 +40,13 @@
 #'             UforetrygdPreOp: Søkt eller planlegger å søke uføretrygd?
 #'             Utdanning: Andel høyskole-/universitetsutdannede
 #'
+#' @return Figur med...
+#'
 #' @export
 
 FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-12-31', enhetsUtvalg=0,
-                            minald=0, maxald=130, erMann='', hentData=0, tittel=1, reshID, outfile='') {
+                            minald=0, maxald=130, erMann='', hentData=0, preprosess=TRUE,
+                            tittel=1, reshID, outfile='') {
 
 	if (hentData == 1) {
 		RegData <- NakkeRegDataSQL()	#RegData <- NakkeLoadRegDataMinimal()

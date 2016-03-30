@@ -5,22 +5,22 @@
 \title{Funksjon som gjør utvalg i datagrunnlaget til registreringene for Nakke}
 \usage{
 NakkeLibUtvalg(RegData, datoFra, datoTil, minald = 0, maxald = 130,
-  erMann = "", tidlOp = "", fargepalett = "BlaaOff")
+  erMann = "", fargepalett = "BlaaOff")
 }
 \arguments{
-\item{RegData}{- ei dataramme med alle nødvendige variable fra registeret}
+\item{RegData}{Dataramme med alle nødvendige variable fra registeret}
 
-\item{datoFra}{- Operasjonsdato, fra og med. Standard: '2012-01-01'}
+\item{datoFra}{Operasjonsdato, fra og med. Standard: '2012-01-01'}
 
-\item{datoTil}{- Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
+\item{datoTil}{Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
 
-\item{minald}{- alder, fra og med}
+\item{minald}{Alder, fra og med}
 
-\item{maxald}{- alder, til og med}
+\item{maxald}{Alder, til og med}
 
-\item{erMann}{- kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
+\item{erMann}{Kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
 
-\item{fargepalett:}{Velge fargepalett, standard:BlaaOff ("offentliggjøringsfargene")}
+\item{fargepalett}{- Velge fargepalett, standard:BlaaOff ("offentliggjøringsfargene")}
 }
 \description{
 Funksjon som gjør utvalg av dataene, returnerer det reduserte datasettet og utvalgsteksten.

@@ -7,12 +7,12 @@
 FigGjsnTid(RegData, outfile, valgtVar, erMann = "", minald = 0,
   maxald = 130, tittel = 1, datoFra = "2007-01-01",
   datoTil = "3000-01-01", valgtMaal = "", enhetsUtvalg = 1,
-  hentData = 0, reshID)
+  hentData = 0, preprosess = TRUE, reshID)
 }
 \arguments{
-\item{RegData}{- ei dataramme med alle nødvendige variable fra registeret}
+\item{RegData}{Dataramme med alle nødvendige variable fra registeret}
 
-\item{outfile}{- navn på fil figuren skrives ned til}
+\item{outfile}{Navn på fil figuren skrives ned til}
 
 \item{valgtVar}{- Variabelen det skal vises resultat for.
 EMSendr12mnd: Forbedring av EMS hos myelopati-pasienter, 12 mnd.
@@ -27,29 +27,34 @@ NDIscorePreOp: NDI før operasjon
 NDIendr3mnd: Forbedring av NDI, 3 mnd. etter operasjon
 NDIendr12mnd: Forbedring av NDI, 3 mnd. etter operasjon}
 
-\item{erMann}{- kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
+\item{erMann}{Kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
 
-\item{minald}{- alder, fra og med}
+\item{minald}{Alder, fra og med}
 
-\item{maxald}{- alder, til og med}
+\item{maxald}{Alder, til og med}
 
-\item{tittel}{- om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
+\item{tittel}{Om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
 0: ikke vis tittel, 1: vis tittel (standard)}
 
-\item{datoFra}{- Operasjonsdato, fra og med. Standard: '2012-01-01'}
+\item{datoFra}{Operasjonsdato, fra og med. Standard: '2012-01-01'}
 
-\item{datoTil}{- Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
+\item{datoTil}{Operasjonsdato, til og med. Standard: '3000-01-01' (siste registreringsdato)}
 
-\item{valgtMaal}{- 'Med' gir median, alt annet gir gjennomsnitt}
+\item{valgtMaal}{Sentralmål: 'Med' gir median, alt annet gir gjennomsnitt}
 
-\item{enhetsUtvalg}{- 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet}
+\item{enhetsUtvalg}{Sammenlikning eller ikke: 0-hele landet, 1-egen enhet mot resten av landet, 2-egen enhet}
 
-\item{hentData}{- Settes til 1 (standard) om det skal spørres etter data fra funksjonen.
-Settes til en annen verdi om data leveres til funksjonen gjennom 'RegData',
-eksempelvis ved bruk av eksempeldatasettet eller ved kall fra andre
-funksjoner der data allerede er tilgjengelig.}
+\item{hentData}{Angir om funksjonen skal kjøre spørring for å hente data eller ikke.
+0: ikke kjør (standard)
+1: kjør}
 
-\item{reshID}{- avdelingsid (reshID) for egen avdeling,}
+\item{preprosess}{Skal data preprosesseres, dvs. gjøre standard omregning av variable og beregne nye.
+TRUE (standard) / FALSE}
+
+\item{reshID}{Avdelingsid (reshID) for egen avdeling,}
+}
+\value{
+Figur med...
 }
 \description{
 Gjennomsnitt/median per år med konfidensintervall for valgt variabel.
