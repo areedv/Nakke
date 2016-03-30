@@ -44,7 +44,6 @@ maxald <- 130	#alder, til og med
 datoFra <- '2012-01-01'	 # min og max dato i utvalget vises alltid i figuren.
 datoTil <- '2016-04-01'
 erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
-libkat <- 'C:/Registre/Rlib/trunk/'		#del av sti til bibliotekkatalog, før /lib/r/<funksjon.R>
 tittel=1
 enhetsUtvalg <- 1	#1-Eget sykehus mot resten (standard), 0-Hele landet, 2-Eget sykehus
 valgtVar <- 'BMI'	#Må velge... Alder, AntallNivaaOpr, Antibiotika, ArbeidstausPreOp
@@ -55,8 +54,8 @@ valgtVar <- 'BMI'	#Må velge... Alder, AntallNivaaOpr, Antibiotika, ArbeidstausP
       #SivilStatus, Saardren,SmertestillBrukPreOp, SymptVarighetArmer, SymptVarighetNakkeHode,
       #TidlOpr, TidlOprAntall, UforetrygdPreOp,Utdanning
 
-outfile <- ''	#paste(valgtVar, '.png', sep='')	#''	#Navn angis av Jasper
-setwd("C:/Registre/Nakke/trunk/Andeler")
+outfile <- paste(valgtVar, '_ford.png', sep='')	#''	#Navn angis av Jasper
+setwd("C:/ResultattjenesteGIT/Nakke/")
 
 FigAndeler(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
            datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
