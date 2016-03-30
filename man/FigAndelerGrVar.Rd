@@ -4,14 +4,46 @@
 \alias{FigAndelerGrVar}
 \title{Søylediagram med andeler for hver grupperingsenhet (sykehus, RHF, ...)}
 \usage{
-FigAndelerGrVar(RegData, valgtVar, datoFra = "2013-01-01",
+FigAndelerGrVar(RegData, valgtVar, datoFra = "2012-01-01",
   datoTil = "3000-12-31", enhetsUtvalg = 0, minald = 0, maxald = 130,
   erMann = "", hentData = 0, tittel = 1, reshID, outfile = "")
 }
 \arguments{
 \item{RegData}{- ei dataramme med alle nødvendige variable fra registeret}
 
-\item{valgtVar}{- Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...}
+\item{valgtVar}{- Variabelen det skal vises resultat for.
+Alder: Aldersfordeling
+AndreRelSykdommer: Andre sykdommer
+Antibiotika: Fått antibiotika
+Arbeidstaus12mnd: Mottar sykepenger, 12 mnd etter operasjon?
+Arbeidstaus3mnd: Mottar sykepenger, 3 mnd etter operasjon?
+ArbeidstausPreOp: Mottar sykepenger, preoperativt?
+ASAgrad: ASA-grad > II
+BMI: Pasienter med fedme
+EnhverKompl3mnd: Alle komplikasjoner
+ErstatningPreOp: Søkt/planlegger å søke erstatning
+FornoydBeh12mnd: Fornøyde pasienter, 12 mnd.
+FornoydBeh3mnd: Fornøyde pasienter, 3 mnd.
+KomplinfekDyp3mnd: Pasientrapportert dyp infeksjon, 3 mnd.
+KomplinfekOverfl3mnd: Overfladisk infeksjon, 3 mnd.
+KomplStemme3mnd: Stemmevansker, 3 mnd.
+KomplSvelging3mnd: Svelgvansker, 3 mnd.
+Misfor12mnd: Misfornøyde pasienter, 12 mnd.
+Misfor3mnd: Misfornøyde pasienter, 3 mnd.
+NDIendr12mnd: Minst 30% forbedring av NDI, 12 mnd.
+NRSsmerteArmEndr12mnd: Minst 30% forbedring av NSR-arm, 12 mnd.
+NytteOpr12mnd: Klart bedre, 12 mnd.
+NytteOpr3mnd: Klart bedre, 3 mnd.
+Verre12mnd: Klart verre, 12 mnd.
+Verre3mnd. Klart verre, 3 mnd.
+OprIndikMyelopati: Operasjonsårsak, Myelopati
+Roker: Røykere
+Saardren: Andel som får sårdren
+SmertestillPreOp: Bruker smertestillende, preop.
+SymptVarighetNakkeHode: Varighet av hode-/nakkesmerter over 1 år
+SymptVarighetSmerterUker: Varighet av smerter minst 1 år
+UforetrygdPreOp: Søkt eller planlegger å søke uføretrygd?
+Utdanning: Andel høyskole-/universitetsutdannede}
 
 \item{datoFra}{- Operasjonsdato, fra og med. Standard: '2012-01-01'}
 
@@ -29,6 +61,9 @@ FigAndelerGrVar(RegData, valgtVar, datoFra = "2013-01-01",
 Settes til en annen verdi om data leveres til funksjonen gjennom 'RegData',
 eksempelvis ved bruk av eksempeldatasettet eller ved kall fra andre
 funksjoner der data allerede er tilgjengelig.}
+
+\item{tittel}{- om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
+0: ikke vis tittel, 1: vis tittel (standard)}
 
 \item{reshID}{- avdelingsid (reshID) for egen avdeling,}
 

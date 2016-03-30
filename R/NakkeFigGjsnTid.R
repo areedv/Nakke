@@ -16,7 +16,6 @@
 #'             EQ5Dendr12mnd: Forbedring av EQ5D, 12 mnd.
 #'             EQ5Dendr3mnd: Forbedring av EQ5D, 3 mnd.
 #'             Eq5DScorePreOp: EQ5D, før operasjon
-#'
 #'             KnivtidTotalMin: total knivtid
 #'             LiggeDognPostop: liggetid etter operasjon
 #'             LiggeDognTotalt: antall liggedøgn, totalt

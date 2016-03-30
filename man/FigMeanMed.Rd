@@ -11,7 +11,15 @@ FigMeanMed(RegData, valgtVar, valgtMaal = "Gjsn", datoFra = "2012-04-01",
 \arguments{
 \item{RegData}{- ei dataramme med alle nødvendige variable fra registeret}
 
-\item{valgtVar}{- Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...}
+\item{valgtVar}{- Variabelen det skal vises resultat for.
+Alder: alder (år)
+EMSscorePreOp: EMS hos Myelopatipasienter før
+KnivtidTotalMin: total knivtid
+NDIscorePreOp: NDI før operasjon
+LiggeDognPostop: liggetid etter operasjon
+LiggeDognTotalt: antall liggedøgn, totalt
+NRSsmerteArmPreOp: NSR, arm før operasjon
+NRSsmerteNakkePreOp: NSR, nakke før operasjon}
 
 \item{valgtMaal}{- 'Med' gir median, alt annet gir gjennomsnitt}
 

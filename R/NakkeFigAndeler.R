@@ -59,7 +59,7 @@
 #'
 #' @export
 
-FigAndeler  <- function(RegData, hentData=1, valgtVar, datoFra='2012-01-01', datoTil='3000-12-31',
+FigAndeler  <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-12-31',
 		minald=0, maxald=130, erMann='', tittel=1, outfile='', hentData=0, preprosess=TRUE,
 		reshID, enhetsUtvalg=1)
 {

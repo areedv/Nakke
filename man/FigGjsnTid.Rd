@@ -14,13 +14,27 @@ FigGjsnTid(RegData, outfile, valgtVar, erMann = "", minald = 0,
 
 \item{outfile}{- navn på fil figuren skrives ned til}
 
-\item{valgtVar}{- Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...}
+\item{valgtVar}{- Variabelen det skal vises resultat for.
+EMSendr12mnd: Forbedring av EMS hos myelopati-pasienter, 12 mnd.
+EMSendr3mnd: Forbedring av EMS hos myelopati-pasienter, 3 mnd.
+EQ5Dendr12mnd: Forbedring av EQ5D, 12 mnd.
+EQ5Dendr3mnd: Forbedring av EQ5D, 3 mnd.
+Eq5DScorePreOp: EQ5D, før operasjon
+KnivtidTotalMin: total knivtid
+LiggeDognPostop: liggetid etter operasjon
+LiggeDognTotalt: antall liggedøgn, totalt
+NDIscorePreOp: NDI før operasjon
+NDIendr3mnd: Forbedring av NDI, 3 mnd. etter operasjon
+NDIendr12mnd: Forbedring av NDI, 3 mnd. etter operasjon}
 
 \item{erMann}{- kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
 
 \item{minald}{- alder, fra og med}
 
 \item{maxald}{- alder, til og med}
+
+\item{tittel}{- om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
+0: ikke vis tittel, 1: vis tittel (standard)}
 
 \item{datoFra}{- Operasjonsdato, fra og med. Standard: '2012-01-01'}
 

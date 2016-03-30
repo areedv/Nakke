@@ -1,6 +1,6 @@
-#' Provide global dataframe for Nakke
+#' Henter data registrert for Degenerativ Nakke
 #'
-#' Provides Nakke data from staging
+#' Henter data for Degenerativ Nakke fra "staging"
 #'
 #' @inheritParams FigAndeler
 #'
@@ -19,12 +19,6 @@ NGERHentRegData <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	AntBarn
 	AntBarnPas
 	Antibiotika
-	AntibiotikaAntDogn
-	AntibiotikaDose
-	AntibiotikaDoseAntall
-	AntibiotikaIntEvtAntDogn
-	AntibiotikaIntKunOprDag
-	AntibiotikaMedikament
 	Arbeidstaus12mnd
 	Arbeidstaus3mnd
 	ArbeidstausPreOp
@@ -96,7 +90,7 @@ NGERHentRegData <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	OperasjonsKategori
 	OppFolgStatus12mnd
 	OppFolgStatus3mnd
-	OprDato
+	OprDato AS InnDato
 	OprIndikAnnet
 	OprIndikasjon
 	OprIndikasjonUtfylt
@@ -156,13 +150,19 @@ NGERHentRegData <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	VarighetSykeMeld3mnd
 	Vekt
 	VektMissing
-                  WHERE HovedDato >= \'', datoFra, '\' AND HovedDato <= \'', datoTil, '\'')
+                  WHERE InnDato >= \'', datoFra, '\' AND InnDato <= \'', datoTil, '\'')
 
 RegData <- rapbase::LoadRegData(registryName, query, dbType)
 
 #FROM AlleVarNum INNER JOIN ForlopsOversikt ON AlleVarNum.MCEID = ForlopsOversikt.ForlopsID
 
 
+#	AntibiotikaAntDogn
+#	AntibiotikaDose
+#	AntibiotikaDoseAntall
+#	AntibiotikaIntEvtAntDogn
+#	AntibiotikaIntKunOprDag
+#	AntibiotikaMedikament
 #	BakreFusjonDistaltNiv
 #	BakreFusjonProximaltNiv
 #	BakreFusjonSkruer

@@ -11,7 +11,37 @@ FigAndelTid(RegData, valgtVar, datoFra = "2013-01-01",
 \arguments{
 \item{RegData}{- ei dataramme med alle nødvendige variable fra registeret}
 
-\item{valgtVar}{- Variabelen det skal vises resultat for. Må velges: Alder, BMI, ...}
+\item{valgtVar}{- Variabelen det skal vises resultat for.
+Alder: Aldersfordeling
+AntallNivaaOpr: Antall nivå operert
+Antibiotika: Er det gitt antibiotikaprofylakse?
+Arbeidstaus12mnd: Arbeidsstatus 12 mnd. etter operasjon
+Arbeidstaus3mnd: Arbeidsstatus 3 mnd. etter operasjon
+ArbeidstausPreOp: Arbeidsstatus før operasjon
+ASAgrad: ASA-grad
+BMI: Pasientenes BMI (Body Mass Index)
+EqAngstPreOp: Helsetilstand, Angst
+ErstatningPreOp: Søkt erstatning?
+FornoydBeh12mnd: Fornøydhet med behandlinga på sykehuset, 12 mnd
+FornoydBeh3mnd: Fornøydhet med behandlinga på sykehuset, 3 mnd
+OperasjonsKategori: Hastegrad
+LiggeDognPostop: Antall liggedøgn postoperativt
+LiggeDognTotalt: Totalt antall liggedøgn
+Morsmal: Morsmål
+NytteOpr12mnd: Nytte av operasjon, 12 mnd
+NytteOpr3mnd: Nytte av operasjon, 3 mnd
+OprIndikPareseGrad: Paresegrad før operasjon
+Roker: Røyker pasienten?
+Saardren: Har pasienten fått sårdren?
+SivilStatus: Sivilstatus
+SmertestillBrukPreOp: Hyppighet av smertestillende før operasjonen
+Snuser: Snuser pasienten?
+SymptVarighetArmer: Varighet av utstrålende armsmerter
+SymptVarighetNakkeHode: Varighet av nakke-/hodesmerter
+TidlOpr: Er pasienten tidligere operert?
+TidlOprAntall: Antall tidligere operasjoner
+UforetrygdPreOp: Søkt uføretrygd?
+Utdanning: Utdanningsnivå}
 
 \item{datoFra}{- Operasjonsdato, fra og med. Standard: '2012-01-01'}
 
@@ -22,6 +52,9 @@ FigAndelTid(RegData, valgtVar, datoFra = "2013-01-01",
 \item{maxald}{- alder, til og med}
 
 \item{erMann}{- kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge}
+
+\item{tittel}{- om tittel skal vises i figuren eller ikke. Tittel tas bort i samlerapporter.
+0: ikke vis tittel, 1: vis tittel (standard)}
 
 \item{reshID}{- avdelingsid (reshID) for egen avdeling,}
 
