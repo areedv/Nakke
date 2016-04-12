@@ -46,7 +46,7 @@ datoTil <- '2016-04-01'
 erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 tittel=1
 enhetsUtvalg <- 1	#1-Eget sykehus mot resten (standard), 0-Hele landet, 2-Eget sykehus
-valgtVar <- 'BMI'	#Må velge... Alder, AntallNivaaOpr, Antibiotika, ArbeidstausPreOp
+valgtVar <- 'Alder'	#Må velge... Alder, AntallNivaaOpr, Antibiotika, ArbeidstausPreOp
         #Arbeidstaus3mnd, Arbeidstaus12mnd, ASAgrad, BMI, EqAngstPreOp, ErstatningPreOp,FornoydBeh3mnd,FornoydBeh12mnd
       #Komorbiditet,Kompl3mnd, KomplOpr,LiggeDognPostop, LiggeDognTotalt, Morsmal, NytteOpr3mnd, NytteOpr12mnd,
       #OperasjonsKategori,

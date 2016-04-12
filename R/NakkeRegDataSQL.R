@@ -5,7 +5,6 @@
 #' @inheritParams FigAndeler
 #'
 #' @return Henter dataramma RegData for Degenerativ Nakke
-#'
 #' @export
 #'
 NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
@@ -91,7 +90,7 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	OperasjonsKategori,
 	OppFolgStatus12mnd,
 	OppFolgStatus3mnd,
-	OprDato AS InnDato,
+	OprDato,
 	OprIndikAnnet,
 	OprIndikasjon,
 	OprIndikasjonUtfylt,
@@ -151,7 +150,7 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	VarighetSykeMeld3mnd,
 	Vekt,
 	VektMissing
-FROM AlleVarNum	
+FROM AlleVarNum
                   WHERE OprDato >= \'', datoFra, '\' AND OprDato <= \'', datoTil, '\'')
 
 RegData <- rapbase::LoadRegData(registryName, query, dbType)
