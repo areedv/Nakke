@@ -151,7 +151,8 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	VarighetSykeMeld3mnd,
 	Vekt,
 	VektMissing
-                  WHERE InnDato >= \'', datoFra, '\' AND InnDato <= \'', datoTil, '\'')
+FROM AlleVarNum	
+                  WHERE OprDato >= \'', datoFra, '\' AND OprDato <= \'', datoTil, '\'')
 
 RegData <- rapbase::LoadRegData(registryName, query, dbType)
 
