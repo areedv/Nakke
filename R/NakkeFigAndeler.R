@@ -63,7 +63,7 @@ FigAndeler  <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-1
 {
 
 	if (hentData == 1) {
-		RegData <- NakkeRegDataSQL()
+		RegData <- NakkeRegDataSQL(datoFra=datoFra, datoTil=datoTil)
 	  }
 
 # Preprosessere data
