@@ -72,7 +72,7 @@ if (enhetsUtvalg == 7) {
 		cexShNavn <- 1
 	}
 
-grVar <- 'Avdeling'
+grVar <- 'SykehusNavn'
 RegData[ ,grVar] <- factor(RegData[ ,grVar])
 Ngrense <- 10		#Minste antall registreringer for at ei gruppe skal bli vist
 

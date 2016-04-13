@@ -21,7 +21,7 @@
 #'             LiggeDognTotalt: antall liggedøgn, totalt
 #'             NDIscorePreOp: NDI før operasjon
 #'             NDIendr3mnd: Forbedring av NDI, 3 mnd. etter operasjon
-#'             NDIendr12mnd: Forbedring av NDI, 3 mnd. etter operasjon
+#'             NDIendr12mnd: Forbedring av NDI, 12 mnd. etter operasjon
 #'
 #'@return Figur med...
 #'

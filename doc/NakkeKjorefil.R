@@ -146,7 +146,7 @@ erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), 
 libkat <- 'C:/Registre/Rlib/trunk/'		#del av sti til bibliotekkatalog, før /lib/r/<funksjon.R>
 tittel=1
 enhetsUtvalg <- 1	#1-Eget sykehus mot resten (standard), 0-Hele landet, 2-Eget sykehus
-valgtVar <- 'NRSsmerteArmEndr12mnd'	#Må velge... Alder, AndreRelSykdommer, Antibiotika,
+valgtVar <- 'Alder'	#Må velge... Alder, AndreRelSykdommer, Antibiotika,
           #ArbeidstausPreOp', 'Arbeidstaus3mnd', 'Arbeidstaus12mnd, ASAgrad, BMI, EnhverKompl3mnd
 		  #ErstatningPreOp,
 		  #FornoydBeh3mnd,FornoydBeh12mnd, Misfor3mnd,Misfor12mnd, KomplinfekDyp3mnd,
@@ -154,11 +154,10 @@ valgtVar <- 'NRSsmerteArmEndr12mnd'	#Må velge... Alder, AndreRelSykdommer, Anti
 		  #NRSsmerteArmEndr12mnd,Verre3mnd, Verre12mnd, OprIndikMyelopati, Roker, Saardren,
 		  #SmertestillPreOp, SymptVarighetNakkeHode, SymptVarighetSmerterUker, UforetrygdPreOp, Utdanning
 
-outfile <- paste(valgtVar, '.png', sep='')	#''	#Navn angis av Jasper
-source("NakkeFigAndelerGrVar.R", encoding="UTF-8")
+outfile <- paste(valgtVar, '_Shus.png', sep='')	#''	#Navn angis av Jasper
 FigAndelerGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
            datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
-           reshID=reshID, enhetsUtvalg=enhetsUtvalg, libkat=libkat, outfile=outfile)
+           reshID=reshID, enhetsUtvalg=enhetsUtvalg, outfile=outfile)
 
 variable <- c('Alder', 'AndreRelSykdommer', 'Antibiotika',
           'ArbeidstausPreOp', 'Arbeidstaus3mnd', 'Arbeidstaus12mnd', 'ASAgrad', 'BMI', 'EnhverKompl3mnd', 'ErstatningPreOp',
