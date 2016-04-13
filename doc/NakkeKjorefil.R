@@ -83,7 +83,7 @@ for (valgtVar in variable) {
 #------------------------------ Andel, utvikling over tid --------------------------
 #-----------------------------------------------------------------------------------
 rm(list=ls())
-NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-01-18Staging.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
+NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-04-13.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
 RegData <- NakkeData
 setwd("C:/Registre/Nakke/trunk/AndelTid")
 
@@ -131,7 +131,7 @@ for (valgtVar in variable) {
 #------------------------------ Andel, per enhet --------------------------
 #-----------------------------------------------------------------------------------
 rm(list=ls())
-NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-01-18Staging.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
+NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-04-13.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
 RegData <- NakkeData
 setwd("C:/Registre/Nakke/trunk/AndelerGrVar")
 
@@ -165,7 +165,6 @@ variable <- c('Alder', 'AndreRelSykdommer', 'Antibiotika',
              'KomplinfekOverfl3mnd', 'KomplStemme3mnd', 'KomplSvelging3mnd', 'NDIendr12mnd', 'NytteOpr3mnd', 'NytteOpr12mnd',
              'NRSsmerteArmEndr12mnd','Verre3mnd', 'Verre12mnd', 'OprIndikMyelopati', 'Roker', 'Saardren',
              'SmertestillPreOp', 'SymptVarighetNakkeHode', 'SymptVarighetSmerterUker', 'UforetrygdPreOp', 'Utdanning')
-source("NakkeFigAndelerGrVar.R", encoding="UTF-8")
 
 for (valgtVar in variable) {
      outfile <- paste(valgtVar, '.png', sep='')
@@ -176,7 +175,7 @@ for (valgtVar in variable) {
 #------------------------------ Gjennomsnitt/Median per år --------------------------
 #-----------------------------------------------------------------------------------
 rm(list=ls())
-NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-01-18Staging.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
+NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-04-13.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
 RegData <- NakkeData
 setwd("C:/Registre/Nakke/trunk/GjsnTid")
 
@@ -191,16 +190,24 @@ erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), 
 libkat <- 'C:/Registre/Rlib/trunk/'		#del av sti til bibliotekkatalog, før /lib/r/<funksjon.R>
 tittel=1
 enhetsUtvalg <- 1	#1-Eget sykehus mot resten (standard), 0-Hele landet, 2-Eget sykehus
-valgtVar <- 'EQ5Dendr12mnd'	#Må velges: EMSendr12mnd, EMSendr3mnd, EQ5Dendr12mnd, EQ5Dendr3mnd, Eq5DScorePreOp,
+valgtVar <- 'KnivtidTotalMin'	#Må velges: EMSendr12mnd, EMSendr3mnd, EQ5Dendr12mnd, EQ5Dendr3mnd, Eq5DScorePreOp,
                #KnivtidTotalMin, LiggeDognPostop, LiggeDognTotalt
                #NDIendr12mnd, NDIendr3mnd, NDIscorePreOp
 
 outfile <- paste(valgtVar, '.png', sep='')	#''	#Navn angis av Jasper
-source("NakkeFigGjsnTid.R", encoding="UTF-8")
 utdata <- FigGjsnTid(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar, valgtMaal='',
            datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
-           reshID=reshID, enhetsUtvalg=enhetsUtvalg, libkat=libkat, outfile=outfile)
+           reshID=reshID, enhetsUtvalg=enhetsUtvalg, outfile=outfile)
 
+variable <- c('EMSendr12mnd', 'EMSendr3mnd', 'EQ5Dendr12mnd', 'EQ5Dendr3mnd', 'Eq5DScorePreOp',
+              'KnivtidTotalMin', 'LiggeDognPostop', 'LiggeDognTotalt',
+              'NDIendr12mnd', 'NDIendr3mnd', 'NDIscorePreOp')
+for (valgtVar in variable) {
+     outfile <- paste(valgtVar, '_GjsnTid.png', sep='')
+     FigGjsnTid(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar, valgtMaal='',
+                                datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
+                                reshID=reshID, enhetsUtvalg=enhetsUtvalg, outfile=outfile)
+}
 
 
 

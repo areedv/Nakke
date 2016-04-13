@@ -60,11 +60,20 @@ indEgen1 <- match(reshID, RegData$ReshId)
 if (enhetsUtvalg == 2) {RegData <- 	RegData[which(RegData$ReshId == reshID),]	#kun egen enhet
 	}
 
-if (grep('endr', valgtVar) != 1 ) {	#Søke på strengen "endr"
+if (length(grep('endr', valgtVar)) != 1 ) {	#Søke på strengen "endr"
 	RegData$Variabel <- RegData[ ,valgtVar]
 }
 
-	if (valgtVar=='KnivtidTotalMin') {
+if (valgtVar=='Eq5DScorePreOp') {
+     #Pasientkjema.
+     KIekstrem <- c(-0.6, 1)
+     indVar <- which(RegData[ , valgtVar] >= KIekstrem[1])
+     indSkjema <- which(RegData$PasientSkjemaStatus==1)
+     RegData <- RegData[intersect(indVar, indSkjema), ]
+     TittelVar <- 'EQ5D, før operasjon'
+     ytxt1 <- '(EQ5D-skåring)'
+}
+if (valgtVar=='KnivtidTotalMin') {
 		#Legeskjema.
 		RegData <- RegData[which(RegData[ ,valgtVar]>0), ]
 		KIekstrem <- c(0, 500)
@@ -86,15 +95,6 @@ if (grep('endr', valgtVar) != 1 ) {	#Søke på strengen "endr"
 		KIekstrem <- c(0, 30)
 		TittelVar <- 'Antall liggedøgn totalt'
 		ytxt1 <- '(døgn)'
-		}
-	if (valgtVar=='Eq5DScorePreOp') {
-		#Pasientkjema.
-		KIekstrem <- c(-0.6, 1)
-		indVar <- which(RegData[ , valgtVar] >= KIekstrem[1])
-		indSkjema <- which(RegData$PasientSkjemaStatus==1)
-		RegData <- RegData[intersect(indVar, indSkjema), ]
-		TittelVar <- 'EQ5D, før operasjon'
-		ytxt1 <- '(EQ5D-skåring)'
 		}
 	if (valgtVar=='NDIscorePreOp') {
 		#Pasientkjema.
