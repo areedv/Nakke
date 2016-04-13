@@ -3,7 +3,7 @@
 export(FigAndelTid)
 export(FigAndeler)
 export(FigAndelerGrVar)
-export(FigGjsnMed)
+export(FigGjsnGrVar)
 export(FigGjsnTid)
 export(NakkeLibUtvalg)
 export(NakkePreprosess)

@@ -21,7 +21,7 @@
 #' @export
 
 
-FigGjsnMed <- function(RegData, valgtVar, valgtMaal='Gjsn', datoFra='2012-04-01', datoTil='2050-12-31',
+FigGjsnGrVar <- function(RegData, valgtVar, valgtMaal='Gjsn', datoFra='2012-04-01', datoTil='2050-12-31',
 		minald=0, maxald=130, erMann='', reshID, outfile='', hentData=0, preprosess=TRUE) {
 
 
