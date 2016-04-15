@@ -34,6 +34,7 @@
 #------------------------------ Andeler flere var --------------------------
 #------------------------------ (Fordelinger) --------------------------
 rm(list=ls())
+library(Nakke)
 NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-01-18Staging.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
 RegData <- NakkeData
 # Inndata til funksjon:
@@ -42,10 +43,10 @@ reshID <- 601161 #De tre med flest reg:
 minald <- 0	#alder, fra og med
 maxald <- 130	#alder, til og med
 datoFra <- '2012-01-01'	 # min og max dato i utvalget vises alltid i figuren.
-datoTil <- '2016-04-01'
-erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
+datoTil <- '2016-05-01'
+erMann <- 1			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 tittel=1
-enhetsUtvalg <- 1	#1-Eget sykehus mot resten (standard), 0-Hele landet, 2-Eget sykehus
+enhetsUtvalg <- 0	#1-Eget sykehus mot resten (standard), 0-Hele landet, 2-Eget sykehus
 valgtVar <- 'Alder'	#Må velge... Alder, AntallNivaaOpr, Antibiotika, ArbeidstausPreOp
         #Arbeidstaus3mnd, Arbeidstaus12mnd, ASAgrad, BMI, EqAngstPreOp, ErstatningPreOp,FornoydBeh3mnd,FornoydBeh12mnd
       #Komorbiditet,Kompl3mnd, KomplOpr,LiggeDognPostop, LiggeDognTotalt, Morsmal, NytteOpr3mnd, NytteOpr12mnd,
@@ -230,21 +231,17 @@ valgtVar <- 'NRSsmerteArmPreOp'	#Må velge... Alder, EMSscorePreOp, LiggeDognPos
           #NDIscorePreOp, NRSsmerteArmPreOp, NRSsmerteNakkePreOp
 
 outfile <- paste(valgtVar, '.png', sep='')	#''	#Navn angis av Jasper
-setwd("C:/Registre/Nakke/trunk/GjsnGrVar")
 
-source("NakkeFigMeanMed.R", encoding="UTF-8")
-FigMeanMed(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
+FigGjsnGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
             datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
             reshID=reshID, libkat=libkat, outfile=outfile)
 
 
 variable <- c('Alder', 'EMSscorePreOp', 'LiggeDognPostop','KnivtidTotalMin', 'LiggeDognTotalt',
           'NDIscorePreOp', 'NRSsmerteArmPreOp', 'NRSsmerteNakkePreOp')
-source("NakkeFigMeanMed.R", encoding="UTF-8")
-
 for (valgtVar in variable) {
      outfile <- paste(valgtVar, '.png', sep='')
-     FigMeanMed(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
+     FigGjsnGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
                 datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
                 reshID=reshID, libkat=libkat, outfile=outfile)
 }

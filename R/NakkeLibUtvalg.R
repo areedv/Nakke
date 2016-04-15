@@ -15,7 +15,7 @@ NakkeLibUtvalg <- function(RegData, datoFra, datoTil, minald=0, maxald=130, erMa
 Ninn <- dim(RegData)[1]
 indAld <- which(RegData$Alder >= minald & RegData$Alder <= maxald)
 indDato <- which(RegData$InnDato >= as.POSIXlt(datoFra) & RegData$InnDato <= as.POSIXlt(datoTil))
-indKj <- if (erMann %in% 0:1) {which(RegData$erMann == erMann)} else {indKj <- 1:Ninn}
+indKj <- if (erMann %in% 0:1) {which(RegData$ErMann == erMann)} else {indKj <- 1:Ninn}
 #indTidlOp <- if (tidlOp %in% 1:4) {which(RegData$TidlOpr==tidlOp)} else {indTidlOp <- 1:Ninn}
 indMed <- intersect(indAld, intersect(indDato, indKj))
 RegData <- RegData[indMed,]
