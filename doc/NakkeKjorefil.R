@@ -98,7 +98,7 @@ datoTil <- '2016-04-01'
 erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 tittel=1
 enhetsUtvalg <- 1	#1-Eget sykehus mot resten (standard), 0-Hele landet, 2-Eget sykehus
-valgtVar <- 'Roker'	#Må velge... Alder, AndreRelSykdommer, Antibiotika,
+valgtVar <- 'SmertestillPreOp'	#Må velge... Alder, AndreRelSykdommer, Antibiotika,
           #ArbeidstausPreOp', 'Arbeidstaus3mnd', 'Arbeidstaus12mnd, ASAgrad, BMI, ErstatningPreOp,
 		  #Fornoyd12mnd, FornoydBeh3mnd,FornoydBeh12mnd, Misfor3mnd,Misfor12mnd, KomplinfekDyp3mnd,
 		  #KomplinfekOverfl3mnd, KomplStemme3mnd, KomplSvelging3mnd, NytteOpr3mnd, NytteOpr12mnd

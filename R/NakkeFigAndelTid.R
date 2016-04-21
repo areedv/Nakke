@@ -239,8 +239,8 @@ if (valgtVar %in% c('Verre3mnd','Verre12mnd')) {
 	RegData$Variabel[indVar] <- 1
 	VarTxt <- 'med klar forverring'
 	TittelUt <- switch(valgtVar,
-	         Verre3mnd = 'Klart verre, 3 mnd' ,
-	         Verre12mnd = 'Klart verre, 12 mnd')
+                   Verre3mnd = 'Mye verre/verre enn noen gang, 3 mnd.' ,
+                   Verre12mnd = 'Mye verre/verre enn noen gang, 12 mnd.')
 }
 
 if (valgtVar=='OprIndikMyelopati') {
@@ -293,7 +293,7 @@ if (valgtVar == 'SmertestillPreOp') {
 	RegData <- RegData[intersect(which(RegData$SmertestillPreOp %in% 0:1), which(RegData$PasientSkjemaStatus ==1)), ]
 	RegData$Variabel <- RegData$SmertestillPreOp
   	VarTxt <- 'på smertestillende'
-	TittelUt <- 'Andel som bruker smertestillende'
+	TittelUt <- 'Bruker smertestillende før operasjon'
 }
 
 if (valgtVar == 'SymptVarighetNakkeHode') {

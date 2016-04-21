@@ -296,7 +296,7 @@ if (valgtVar == 'SmertestillPreOp') {
 	#Kode 0,1,9: Nei, Ja Ukjent
 	RegData <- RegData[intersect(which(RegData$SmertestillPreOp %in% 0:1), which(RegData$PasientSkjemaStatus ==1)), ]
 	RegData$Variabel <- RegData$SmertestillPreOp
-	TittelUt <- 'Andel som bruker smertestillende'
+	TittelUt <- 'Bruker smertestillende, før operasjon'
 }
 
 if (valgtVar == 'SymptVarighetNakkeHode') {
