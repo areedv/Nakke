@@ -212,7 +212,7 @@ for (valgtVar in variable) {
 #------------------------------ Gjsn/med per enhet --------------------------
 #-----------------------------------------------------------------------------------
 rm(list=ls())
-NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-01-18Staging.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
+NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-04-13.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
 RegData <- NakkeData
 # Inndata til funksjon:
 #...NB: SkjemaID
@@ -220,18 +220,17 @@ reshID <- 601161 #De tre med flest reg:
 minald <- 0	#alder, fra og med
 maxald <- 130	#alder, til og med
 datoFra <- '2012-01-01'	 # min og max dato i utvalget vises alltid i figuren.
-datoTil <- '2016-04-01'
+datoTil <- '2016-06-01'
 erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
-libkat <- 'C:/Registre/Rlib/trunk/'		#del av sti til bibliotekkatalog, før /lib/r/<funksjon.R>
 tittel=1
 valgtVar <- 'NRSsmerteArmPreOp'	#Må velge... Alder, EMSscorePreOp, LiggeDognPostop,KnivtidTotalMin, LiggeDognTotalt,
           #NDIscorePreOp, NRSsmerteArmPreOp, NRSsmerteNakkePreOp
 
-outfile <- paste(valgtVar, '.png', sep='')	#''	#Navn angis av Jasper
+outfile <- paste(valgtVar, '_res72.pdf', sep='')	#''	#Navn angis av Jasper
 
 FigGjsnGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
             datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
-            reshID=reshID, libkat=libkat, outfile=outfile)
+            reshID=reshID, outfile=outfile)
 
 
 variable <- c('Alder', 'EMSscorePreOp', 'LiggeDognPostop','KnivtidTotalMin', 'LiggeDognTotalt',
@@ -240,7 +239,7 @@ for (valgtVar in variable) {
      outfile <- paste(valgtVar, '.png', sep='')
      FigGjsnGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
                 datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
-                reshID=reshID, libkat=libkat, outfile=outfile)
+                reshID=reshID, outfile=outfile)
 }
 
 

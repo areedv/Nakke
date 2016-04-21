@@ -405,10 +405,10 @@ legend('topright', xjust=1, cex=1, lwd=2, col=farger[2],
 	bty='o', bg='white', box.col='white')
 mtext(at=pos+max(pos)*0.0045, GrNavnSort, side=2, las=1, cex=cexShNavn, adj=1, line=0.25)	#Legge på navn som eget steg
 text(x=0.005*xmax, y=pos, Ngrtxt[sortInd], las=1, cex=cexShNavn, adj=0, col=farger[4], lwd=3)	#c(Nshtxt[sortInd],''),
-title(Tittel, line=1, font.main=1, cex.main=1.2)
+title(Tittel, line=1, font.main=1, cex.main=1.3)
 
 text(x=AndelerGrSort+xmax*0.01, y=pos+0.1, andeltxt,
-		las=1, cex=0.8, adj=0, col=farger[1])	#Andeler, hvert sykehus
+		las=1, cex=0.9, adj=0, col=farger[1])	#Andeler, hvert sykehus
 
 #Tekst som angir hvilket utvalg som er gjort
 mtext(utvalgTxt, side=3, las=1, cex=1, adj=0, col=farger[1], line=c(3+0.8*((NutvTxt-1):0)))

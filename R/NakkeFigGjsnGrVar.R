@@ -199,7 +199,7 @@ cexGrNavn <- 1
 cexSoyletxt <- 1
 
 #--------------------------FIGUR---------------------------------------------------
-FigTypUt <- figtype(outfile, height=3*800, fargepalett=NakkeUtvalg$fargepalett)	#res=96,
+FigTypUt <- figtype(outfile, height=3*800, fargepalett=NakkeUtvalg$fargepalett) #, res=96
 farger <- FigTypUt$farger
 #Tilpasse marger for å kunne skrive utvalgsteksten
 NutvTxt <- length(utvalgTxt)
@@ -236,9 +236,7 @@ par('fig'=c(vmarg, 1, 0, 1-0.02*(NutvTxt-1)))	#Har alltid datoutvalg med
 
 
 #Tekst som angir hvilket utvalg som er gjort
-avst <- 0.8
-utvpos <- 3	#Startlinje for teksten
-mtext(utvalgTxt, side=3, las=1, cex=0.9, adj=0, col=farger[1], line=c(3+0.8*((NutvTxt-1):0)))
+mtext(utvalgTxt, side=3, las=1, cex=cexGrNavn*0.9, adj=0, col=farger[1], line=c(3+0.8*((NutvTxt-1):0)))
 
 	options(warn = -1)	#Unngå melding om KI med lengde 0. Fungerer av en eller annen grunn ikke i pdf.
 	arrows(x0=Midt[-indGrUtPlot]*0.999, y0=posKI, x1=KIopp[-indGrUtPlot], y1=posKI,
