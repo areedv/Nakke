@@ -125,13 +125,22 @@ if (valgtVar=='BMI') {
   	VarTxt <- 'med BMI>30'
 	TittelUt <- 'Andel pasienter med fedme'
 }
+
+if (valgtVar=='EnhverKompl3mnd') {
+     #Pasientskjema. Alle komplikasjoner, 3mnd.
+     RegData <- RegData[which(RegData$OppFolgStatus3mnd == 1), ]
+     RegData$Variabel[which(RegData[ ,valgtVar] ==1 )] <- 1
+     VarTxt <- 'komplikasjoner'
+     TittelUt <- 'Komplikasjoner 3 mnd. etter operasjon'
+}
+
 if (valgtVar=='ErstatningPreOp') {
 	#Pasientskjema. Andel med ErstatningPreOp 1 el 3
 	#Kode 1:4,9: 'Ja', 'Nei', 'Planlegger', 'Innvilget', 'Ukjent'
 	RegData <- RegData[intersect(which(RegData$PasientSkjemaStatus == 1), which(RegData$ErstatningPreOp %in% 1:4)), ]
 	RegData$Variabel[which(RegData[ ,valgtVar] %in% c(1,3))] <- 1
   	VarTxt <- 'søkt erstatning'
-	TittelUt <- 'Andel som har søkt/planlegger å søke erstatning'
+	TittelUt <- 'Har søkt/planlegger å søke erstatning før operasjon'
 }
 if (valgtVar %in% c('FornoydBeh3mnd','FornoydBeh12mnd')) {
 	#3/12mndSkjema. Andel med Fornøyd/litt fornøyd (1,2)
@@ -428,7 +437,7 @@ if (ymax > 100) {lines(range(Aartxt),rep(100,2), col=farger[4])}
 
 lines(Aartxt, AndelHoved, col=fargeHoved, lwd=3)
 points(Aartxt, AndelHoved, pch="'", cex=2, col=fargeHoved)
-text(Aartxt, AndelHoved, pos=1, NAarHendHoved, cex=0.9, col=fargeHoved)
+text(Aartxt, AndelHoved, pos=3, NAarHendHoved, cex=0.9, col=fargeHoved)
 
 lines(Aartxt, AndelRest, col=fargeRest, lwd=3)
 points(Aartxt, AndelRest, pch="'", cex=2, col=fargeRest)	#}

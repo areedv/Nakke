@@ -46,6 +46,8 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	Erstatning3mnd,
 	ErstatningPreOp,
 	ForlopsID,
+	FornoydBeh12mnd
+	FornoydBeh3mnd
 	Helsetilst12mnd,
 	Helsetilst3mnd,
 	HelsetilstPreOp,
@@ -85,6 +87,9 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	NDIscore12mnd,
 	NDIscore3mnd,
 	NDIscorePreOp,
+     NRSsmerteArmPreOp,
+	NRSsmerteArm12mnd,
+     NRSsmerteNakkePreOp,
 	NytteOpr12mnd,
 	NytteOpr3mnd,
 	OperasjonsKategori,
@@ -120,11 +125,12 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	RHF,
 	RHF_RESH,
 	Roker,
-	RokerPas,
 	RtgFunnANNET,
 	Saardren,
 	SivilStatus,
 	SivilStatusPas,
+	SmertestillBrukPreOp,
+	SmertestillPreOp,
 	Snuser,
 	SnuserPas,
 	StatusKtr12mnd,
@@ -209,8 +215,6 @@ RegData <- rapbase::LoadRegData(registryName, query, dbType)
 #	ForlopsLagetAv
 #	ForlopsOppdaterAv
 #	ForlopsOppdatert
-#	FornoydBeh12mnd
-#	FornoydBeh3mnd
 #	FriskmeldtDato12mnd
 #	FriskmeldtDato3mnd
 #	NDIarbeid12mnd
@@ -243,18 +247,15 @@ RegData <- rapbase::LoadRegData(registryName, query, dbType)
 #	NDIsovn12mnd
 #	NDIsovn3mnd
 #	NDIsovnPreOp
-#	NRSsmerteArm12mnd
-#	NRSsmerteArm3mnd
-#	NRSsmerteArmMissingPreOp
-#	NRSsmerteArmPreOp
+#    NRSsmerteArm3mnd
+#    NRSsmerteArmMissingPreOp      Ikke brukbar. Manglende verdier for andre enn missing=1
+#    NRSsmerteNakkeMissingPreOp    Ikke brukbar. Manglende verdier for andre enn missing=1
+#    NRSsmerteNakke12mnd
 #	NRSsmerteHodet12mnd
 #	NRSsmerteHodet3mnd
 #	NRSsmerteHodetMissingPreOp
 #	NRSsmerteHodetPreOp
-#	NRSsmerteNakke12mnd
 #	NRSsmerteNakke3mnd
-#	NRSsmerteNakkeMissingPreOp
-#	NRSsmerteNakkePreOp
 #	OppFolgLaget12mnd
 #	OppFolgLaget3mnd
 #	OppFolgLagetAv12mnd
@@ -314,6 +315,7 @@ RegData <- rapbase::LoadRegData(registryName, query, dbType)
 #	PoststedPas
 #	RanawatKlassifikasjon
 #	ReoprInnen90DagerUfylt
+#    RokerPas,
 #	RtgFunnCervicalSpStenose
 #	RtgFunnDegnerasjonNakke
 #	RtgFunnIntrMedHoysingnalMR
@@ -357,8 +359,6 @@ RegData <- rapbase::LoadRegData(registryName, query, dbType)
 #	Smertestill3mnd
 #	SmertestillBruk12mnd
 #	SmertestillBruk3mnd
-#	SmertestillBrukPreOp
-#	SmertestillPreOp
 #	SykdAnnenendokrin
 #	SykdAnnenreumatisk
 #	SykdAnnet

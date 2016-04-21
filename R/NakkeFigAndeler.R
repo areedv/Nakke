@@ -338,7 +338,7 @@ if (valgtVar == 'UforetrygdPreOp') {
 	indDum <- which(RegData$UforetrygdPreOp %in% 1:4)
 	RegData$VariabelGr[indDum] <- RegData$UforetrygdPreOp[indDum]
 	RegData$VariabelGr <- factor(RegData$VariabelGr, levels = c(1:4,9))
-	TittelUt <- 'Søkt uføretrygd?'
+	TittelUt <- 'Søkt uføretrygd før operasjon?'
 	}
 if (valgtVar=='Utdanning') {
 	retn <- 'H'

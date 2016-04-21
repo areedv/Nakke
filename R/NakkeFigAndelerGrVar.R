@@ -59,7 +59,7 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
 
 
 #----------- Figurparametre ------------------------------
-cexShNavn <- 0.85
+cexShNavn <- 1 #0.85
 
 #Når bare skal sammenlikne med sykehusgruppe eller region, eller ikke sammenlikne,
 #trengs ikke data for hele landet:
@@ -141,7 +141,7 @@ if (valgtVar == 'BMI') {
 #BMI > 30
 	RegData <- RegData[which(RegData[,valgtVar] >10), ]
 	RegData$Variabel[which(RegData[ ,valgtVar] > 30)] <- 1
-	TittelUt <- 'Pasienter med fedme'
+	TittelUt <- 'Pasienter med fedme (BMI>30)'
 }
 if (valgtVar == 'EnhverKompl3mnd') {
 #Komplikasjoner
@@ -246,8 +246,8 @@ if (valgtVar %in% c('NytteOpr3mnd', 'NytteOpr12mnd')) {
 	RegData <- RegData[indSkjema, ]
 	RegData$Variabel[which(RegData[ ,valgtVar] %in% 1:2)] <- 1
 	TittelUt <- switch(valgtVar,
-	         NytteOpr3mnd = 'Klart bedre, 3 mnd.' ,
-	         NytteOpr12mnd = 'Klart bedre, 12 mnd.')
+	         NytteOpr3mnd = 'Helt bra eller mye bedre, 3 mnd.' ,
+	         NytteOpr12mnd = 'Helt bra eller mye bedre, 12 mnd.')
 }
 
 if (valgtVar %in% c('Verre3mnd','Verre12mnd')) {
@@ -263,8 +263,8 @@ if (valgtVar %in% c('Verre3mnd','Verre12mnd')) {
 	    Verre12mnd = which(RegData$NytteOpr12mnd %in% 6:7))
 	RegData$Variabel[indVar] <- 1
 	TittelUt <- switch(valgtVar,
-	         Verre3mnd = 'Klart verre, 3 mnd.' ,
-	         Verre12mnd = 'Klart verre, 12 mnd.')
+	         Verre3mnd = 'Mye verre/verre enn noen gang, 3 mnd.' ,
+	         Verre12mnd = 'Mye verre/verre enn noen gang, 12 mnd.')
 }
 
 if (valgtVar=='OprIndikMyelopati') {
@@ -396,7 +396,7 @@ par('fig'=c(vmarg, 1, 0, 1-0.02*(NutvTxt-1)))	#Har alltid datoutvalg med
 
 xmax <- min(max(AndelerGrSort),100)*1.15
 pos <- barplot(as.numeric(AndelerGrSort), horiz=T, border=NA, col=farger[3], #main=Tittel,
-	xlim=c(0,xmax), ylim=c(0.05, 1.25)*length(Ngr), font.main=1, xlab='Andel (%)', las=1, cex.names=0.7)
+	xlim=c(0,xmax), ylim=c(0.05, 1.25)*length(Ngr), font.main=1, xlab='Andel (%)', las=1, cex.names=cexShNavn*0.9)
 ybunn <- 0.1
 ytopp <- pos[AntGr]+1	#-length(indGrUt)]
 lines(x=rep(AndelHele, 2), y=c(ybunn, ytopp), col=farger[2], lwd=2)
@@ -411,7 +411,7 @@ text(x=AndelerGrSort+xmax*0.01, y=pos+0.1, andeltxt,
 		las=1, cex=0.8, adj=0, col=farger[1])	#Andeler, hvert sykehus
 
 #Tekst som angir hvilket utvalg som er gjort
-mtext(utvalgTxt, side=3, las=1, cex=0.9, adj=0, col=farger[1], line=c(3+0.8*((NutvTxt-1):0)))
+mtext(utvalgTxt, side=3, las=1, cex=1, adj=0, col=farger[1], line=c(3+0.8*((NutvTxt-1):0)))
 
 
 par('fig'=c(0, 1, 0, 1))
