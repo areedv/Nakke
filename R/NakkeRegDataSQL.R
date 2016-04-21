@@ -46,8 +46,8 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	Erstatning3mnd,
 	ErstatningPreOp,
 	ForlopsID,
-	FornoydBeh12mnd
-	FornoydBeh3mnd
+	FornoydBeh12mnd,
+	FornoydBeh3mnd,
 	Helsetilst12mnd,
 	Helsetilst3mnd,
 	HelsetilstPreOp,
