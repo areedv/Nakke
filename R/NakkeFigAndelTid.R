@@ -131,7 +131,7 @@ if (valgtVar=='EnhverKompl3mnd') {
      RegData <- RegData[which(RegData$OppFolgStatus3mnd == 1), ]
      RegData$Variabel[which(RegData[ ,valgtVar] ==1 )] <- 1
      VarTxt <- 'komplikasjoner'
-     TittelUt <- 'Komplikasjoner 3 mnd. etter operasjon'
+     TittelUt <- 'Komplikasjoner (totalt) 3 mnd. etter operasjon'
 }
 
 if (valgtVar=='ErstatningPreOp') {

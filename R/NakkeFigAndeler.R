@@ -156,7 +156,7 @@ if (valgtVar == 'EqAngstPreOp') {
 	RegData <- RegData[which(RegData$PasientSkjemaStatus == 1), ]
 	grtxt <- c('Ingen', 'Litt', 'Svært', 'Ukjent')
 	RegData$VariabelGr <- 9
-	indDum <- which(RegData$EqAngstPreOp %in% 1:3)
+	indDum <- which(as.numeric(RegData$EqAngstPreOp) %in% 1:3)
 	RegData$VariabelGr[indDum] <- RegData$EqAngstPreOp[indDum]
 	RegData$VariabelGr <- factor(RegData$VariabelGr, levels = c(1:3,9))
 	subtxt <- 'Grad av engstelighet/deprimerthet'	#Tilstand i forhold til angst'
