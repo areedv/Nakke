@@ -39,6 +39,7 @@ NakkeRegDataSQL <- function(datoFra = '2012-01-01', datoTil = '2099-01-01') {
 	EMSscorePreOp,
 	EnhverKompl12mnd,
 	EnhverKompl3mnd,
+	EqAngstPreOp,
 	Eq5DScore12mnd,
 	Eq5DScore3mnd,
 	Eq5DScorePreOp,
@@ -198,7 +199,6 @@ RegData <- rapbase::LoadRegData(registryName, query, dbType)
 #	EMSnummenhetPreOp
 #	EqAngst12mnd
 #	EqAngst3mnd
-#	EqAngstPreOp
 #	EqGange12mnd
 #	EqGange3mnd
 #	EqGangePreOp

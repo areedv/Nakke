@@ -33,7 +33,7 @@
 #'             Saardren: Andel som får sårdren
 #'             SmertestillPreOp: Bruker smertestillende, preop.
 #'             SymptVarighetNakkeHode: Varighet av hode-/nakkesmerter over 1 år
-#'             SymptVarighetSmerterUker: Varighet av smerter minst 1 år
+#'             SymptVarighetArmer: Varighet av armsmerter, minst 1 år  #' SymptVarighetSmerterUker
 #'             UforetrygdPreOp: Søkt eller planlegger å søke uføretrygd?
 #'             Utdanning: Andel høyskole-/universitetsutdannede
 #'             Verre12mnd: Klart verre, 12 mnd.
@@ -266,7 +266,7 @@ if (valgtVar=='PerOpEnhverKompl') {
 	RegData <- RegData[which(RegData$PerOpEnhverKompl %in% 0:1), ]
 	RegData$Variabel <- RegData$PerOpEnhverKompl
   	VarTxt <- 'med komplikasjoner'
-	TittelUt <- 'Komplikasjoner ved operasjon'
+	TittelUt <- 'Komplikasjoner (alle) ved operasjon'
 }
 
 if (valgtVar=='Roker') {
@@ -301,17 +301,17 @@ if (valgtVar == 'SymptVarighetNakkeHode') {
 	#Kode 1:5,9: 'Ingen', '<3 mnd', '3-12 mnd', '1-2 år', '>2 år', 'Ukjent'
 	RegData <- RegData[intersect(which(RegData$SymptVarighetNakkeHode %in% 1:5), which(RegData$PasientSkjemaStatus ==1)), ]
 	RegData$Variabel[which(RegData[ ,valgtVar] %in% 4:5)] <- 1
-  	VarTxt <- 'med varighet >1år'
-	TittelUt <- 'Varighet av hode-/nakkesmerter over 1 år'
+  	VarTxt <- 'med varighet minst 1 år'
+	TittelUt <- 'Varighet av hode-/nakkesmerter minst 1 år'
 }
 
-if (valgtVar == 'SymptVarighetSmerterUker') {
-	#PasientSkjema. Andel med SymptVarighetSmerterUker >= 52
+if (valgtVar == 'SymptVarighetArmer') {
+	#PasientSkjema. Andel med SymptVarighetArmer 4 el 5
 	#Kode: Antall uker
-	RegData <- RegData[intersect(which(RegData$SymptVarighetSmerterUker >-1), which(RegData$PasientSkjemaStatus ==1)), ]
-	RegData$Variabel[which(RegData[ ,valgtVar] >= 52)] <- 1
-  	VarTxt <- 'med varighet minst 1år'
-	TittelUt <- 'Varighet av smerter minst 1 år'
+	RegData <- RegData[intersect(which(RegData$SymptVarighetArmer >-1), which(RegData$PasientSkjemaStatus ==1)), ]
+	RegData$Variabel[which(RegData[ ,valgtVar] %in% 4:5)] <- 1
+  	VarTxt <- 'med varighet minst 1 år'
+	TittelUt <- 'Varighet av armsmerter minst 1 år'
 }
 
 if (valgtVar == 'UforetrygdPreOp') {

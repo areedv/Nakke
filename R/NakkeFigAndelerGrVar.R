@@ -22,7 +22,9 @@
 #'             KomplinfekDyp3mnd: Pasientrapportert dyp infeksjon, 3 mnd.
 #'             KomplinfekOverfl3mnd: Overfladisk infeksjon, 3 mnd.
 #'             KomplStemme3mnd: Stemmevansker, 3 mnd.
+#'             KomplStemme12mnd: Stemmevansker, 12 mnd.
 #'             KomplSvelging3mnd: Svelgvansker, 3 mnd.
+#'             KomplSvelging12mnd: Svelgvansker, 12 mnd.
 #'             Misfor12mnd: Misfornøyde pasienter, 12 mnd.
 #'             Misfor3mnd: Misfornøyde pasienter, 3 mnd.
 #'             NDIendr12mnd: Minst 30% forbedring av NDI, 12 mnd.
@@ -186,12 +188,12 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
           TittelUt <- 'Overfladisk infeksjon, 3 mnd.'
      }
 
-     if (valgtVar=='KomplStemme3mnd') {
-          #3MndSkjema. Andel med KomplStemme3mnd=1
+     if (valgtVar=='KomplStemme12mnd') {
+          #3MndSkjema. Andel med KomplStemme12mnd=1
           #Kode 0,1: Nei, Ja +tomme
-          RegData <- RegData[intersect(which(RegData$OppFolgStatus3mnd == 1), which(RegData$KomplStemme3mnd %in% 0:1)), ]
+          RegData <- RegData[intersect(which(RegData$OppFolgStatus12mnd == 1), which(RegData$KomplStemme12mnd %in% 0:1)), ]
           RegData$Variabel <- RegData[ ,valgtVar]
-          TittelUt <- 'Stemmevansker, 3 mnd.'
+          TittelUt <- 'Stemmevansker, 12 mnd.'
      }
 
      if (valgtVar=='KomplSvelging3mnd') {
@@ -200,6 +202,14 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
           RegData <- RegData[intersect(which(RegData$OppFolgStatus3mnd == 1), which(RegData$KomplSvelging3mnd %in% 0:1)), ]
           RegData$Variabel <- RegData[ ,valgtVar]
           TittelUt <- 'Svelgvansker, 3 mnd.'
+     }
+
+     if (valgtVar=='KomplSvelging12mnd') {
+          #3MndSkjema. Andel med KomplSvelging12mnd=1
+          #Kode 0,1: Nei, Ja +tomme
+          RegData <- RegData[intersect(which(RegData$OppFolgStatus12mnd == 1), which(RegData$KomplSvelging12mnd %in% 0:1)), ]
+          RegData$Variabel <- RegData[ ,valgtVar]
+          TittelUt <- 'Svelgvansker, 12 mnd.'
      }
 
      if (valgtVar %in% c('Misfor3mnd','Misfor12mnd')) {
@@ -304,17 +314,17 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
           #Kode 1:5,9: 'Ingen', '<3 mnd', '3-12 mnd', '1-2 år', '>2 år', 'Ukjent'
           RegData <- RegData[intersect(which(RegData$SymptVarighetNakkeHode %in% 1:5), which(RegData$PasientSkjemaStatus ==1)), ]
           RegData$Variabel[which(RegData[ ,valgtVar] %in% 4:5)] <- 1
-          VarTxt <- 'med varighet >1år'
-          TittelUt <- 'Varighet av hode-/nakkesmerter over 1 år'
+          VarTxt <- 'med varighet minst 1 år'
+          TittelUt <- 'Varighet av hode-/nakkesmerter minst 1 år'
      }
 
-     if (valgtVar == 'SymptVarighetSmerterUker') {
-          #PasientSkjema. Andel med SymptVarighetSmerterUker >= 52
+     if (valgtVar == 'SymptVarighetArmer') {
+          #PasientSkjema. Andel med SymptVarighetArmer 4 el 5
           #Kode: Antall uker
-          RegData <- RegData[intersect(which(RegData$SymptVarighetSmerterUker >-1), which(RegData$PasientSkjemaStatus ==1)), ]
-          RegData$Variabel[which(RegData[ ,valgtVar] >= 52)] <- 1
+          RegData <- RegData[intersect(which(RegData$SymptVarighetArmer >-1), which(RegData$PasientSkjemaStatus ==1)), ]
+          RegData$Variabel[which(RegData[ ,valgtVar] %in% 4:5)] <- 1
           VarTxt <- 'med varighet minst 1år'
-          TittelUt <- 'Varighet av smerter minst 1 år'
+          TittelUt <- 'Varighet av armsmerter minst 1 år'
      }
 
      if (valgtVar == 'UforetrygdPreOp') {
