@@ -135,7 +135,8 @@ Ngrtxt[indGrUt] <- paste(' (<', Ngrense,')',sep='')	#paste('N<', Ngrense,sep='')
 
 
 if (valgtMaal=='Med') {
-	t1 <- 'Median' } else {
+	t1 <- 'Median'
+	tleg <- t1} else {
 	t1 <- 'Gjennomsnittlig'
 	tleg <- 'Gjennomsnitt'}
 

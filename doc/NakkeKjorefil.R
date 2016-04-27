@@ -223,12 +223,13 @@ datoFra <- '2012-01-01'	 # min og max dato i utvalget vises alltid i figuren.
 datoTil <- '2016-06-01'
 erMann <- ''			#kjønn, 1-menn, 0-kvinner, standard: '' (alt annet enn 0 og 1), dvs. begge
 tittel=1
+valgtMaal = 'Med'
 valgtVar <- 'NRSsmerteArmPreOp'	#Må velge... Alder, EMSscorePreOp, LiggeDognPostop,KnivtidTotalMin, LiggeDognTotalt,
           #NDIscorePreOp, NRSsmerteArmPreOp, NRSsmerteNakkePreOp
 
-outfile <- paste(valgtVar, '_res72.pdf', sep='')	#''	#Navn angis av Jasper
+outfile <- paste(valgtVar, '_', valgtMaal, '.pdf', sep='')	#''	#Navn angis av Jasper
 
-FigGjsnGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
+FigGjsnGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar, valgtMaal=valgtMaal,
             datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
             reshID=reshID, outfile=outfile)
 
