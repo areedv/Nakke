@@ -188,6 +188,14 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
           TittelUt <- 'Overfladisk infeksjon, 3 mnd.'
      }
 
+     if (valgtVar=='KomplStemme3mnd') {
+          #3MndSkjema. Andel med KomplStemme3mnd=1
+          #Kode 0,1: Nei, Ja +tomme
+          RegData <- RegData[intersect(which(RegData$OppFolgStatus3mnd == 1), which(RegData$KomplStemme3mnd %in% 0:1)), ]
+          RegData$Variabel <- RegData[ ,valgtVar]
+          TittelUt <- 'Stemmevansker, 3 mnd.'
+     }
+
      if (valgtVar=='KomplStemme12mnd') {
           #3MndSkjema. Andel med KomplStemme12mnd=1
           #Kode 0,1: Nei, Ja +tomme
