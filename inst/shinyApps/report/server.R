@@ -5,22 +5,22 @@
 shinyServer(function(input, output) {
 
      output$r1Text <- renderText({
-          "Report1"
+          input$erMann
      })
 
-     output$r12Text <- renderText({
-          "Report2"
+     output$r2Text <- renderText({
+          input$erMann
      })
 
      output$r3Text <- renderText({
-          "Report3"
+          input$erMann
      })
 
      output$r4Text <- renderText({
-          "Report4"
+          input$erMann
      })
 
      output$r5Text <- renderText({
-          "Report5"
+          input$erMann
      })
 })

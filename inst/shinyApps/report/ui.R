@@ -3,6 +3,7 @@
 # for 'Nakke'
 
 shinyUI(fluidPage(tabsetPanel(
+
      tabPanel("Report1",
               pageWithSidebar(
                    headerPanel("UI"),
@@ -10,7 +11,7 @@ shinyUI(fluidPage(tabsetPanel(
                         selectInput("erMann",
                                     "Kjønn:",
                                     c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                        ),
+                        )
                    ),
                    mainPanel(
                         textOutput("r1Text")
@@ -23,7 +24,7 @@ shinyUI(fluidPage(tabsetPanel(
                         selectInput("erMann",
                                     "Kjønn:",
                                     c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                        ),
+                        )
                    ),
                    mainPanel(
                         textOutput("r2Text")
@@ -36,7 +37,7 @@ shinyUI(fluidPage(tabsetPanel(
                         selectInput("erMann",
                                     "Kjønn:",
                                     c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                        ),
+                        )
                    ),
                    mainPanel(
                         textOutput("r3Text")
@@ -49,7 +50,7 @@ shinyUI(fluidPage(tabsetPanel(
                         selectInput("erMann",
                                     "Kjønn:",
                                     c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                        ),
+                        )
                    ),
                    mainPanel(
                         textOutput("r4Text")
@@ -62,7 +63,7 @@ shinyUI(fluidPage(tabsetPanel(
                         selectInput("erMann",
                                     "Kjønn:",
                                     c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                        ),
+                        )
                    ),
                    mainPanel(
                         textOutput("r5Text")
