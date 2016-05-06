@@ -8,10 +8,11 @@ shinyUI(fluidPage(tabsetPanel(
               pageWithSidebar(
                    headerPanel("UI"),
                    sidebarPanel(
-                        selectInput("erMann",
-                                    "Kjønn:",
-                                    c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                        )
+                        nakkeStandardInput("uc")
+                        #selectInput("erMann",
+                         #           "Kjønn:",
+                          #          c("Begge"=2, "Menn"=1, "Kvinner"=0)
+                        #)
                    ),
                    mainPanel(
                         textOutput("r1Text")
@@ -21,10 +22,7 @@ shinyUI(fluidPage(tabsetPanel(
               pageWithSidebar(
                    headerPanel("UI"),
                    sidebarPanel(
-                        selectInput("erMann",
-                                    "Kjønn:",
-                                    c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                        )
+                        nakkeStandardInput("uc")
                    ),
                    mainPanel(
                         textOutput("r2Text")
