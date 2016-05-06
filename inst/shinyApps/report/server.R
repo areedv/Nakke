@@ -4,15 +4,15 @@
 
 shinyServer(function(input, output) {
 
-     ucValue1 <- callModule(nakkeStandard, "uc1")
-     ucValue2 <- callModule(nakkeStandard, "uc2")
+     nakkeStandard1 <- callModule(nakkeStandard, "uc1")
+     nakkeStandard2 <- callModule(nakkeStandard, "uc2")
 
      output$r1Text <- renderText({
-          ucValue1()
+          nakkeStandard1()
      })
 
      output$r2Text <- renderText({
-          ucValue2()
+          nakkeStandard2()
      })
 
      output$r3Text <- renderText({

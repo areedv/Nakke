@@ -8,8 +8,15 @@
 #' @export
 
 nakkeStandard <- function(input, output, session) {
-     ucValue <- reactive({
+     erMann <- reactive({
           input$erMann
      })
-     return(ucValue)
+     alder <- reactive({
+          input$alder
+     })
+     periode <- reactive({
+          input$periode
+     })
+     ucValues <- list(erMann=erMann, alder=alder, periode=periode)
+     return(erMann)
 }
