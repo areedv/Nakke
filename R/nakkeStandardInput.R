@@ -12,13 +12,15 @@ nakkeStandardInput <- function(id, label = "Brukervalg") {
      ns <- NS(id)
 
      tagList(
-          selectInput(ns("erMann"),
-                         label=h3("Kjønn:"),
-                         c("Begge"=2, "Menn"=1, "Kvinner"=0)
-                      ),
-          sliderInput(ns("alder"), label = h3("Alder"), min = 0,
-                      max = 130, value = c(0, 130)
-                      ),
-          dateRangeInput(ns("periode"), label = h3("Periode"))
+          sidebarPanel(
+               selectInput(ns("erMann"),
+                           label=h3("Kjønn:"),
+                           c("Begge"=2, "Menn"=1, "Kvinner"=0)
+               ),
+               sliderInput(ns("alder"), label = h3("Alder"), min = 0,
+                           max = 130, value = c(0, 130)
+               ),
+               dateRangeInput(ns("periode"), label = h3("Periode"))
+          )
      )
 }
