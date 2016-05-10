@@ -2,41 +2,26 @@
 
 #--------------------------------------SAMLERAPPORT-----------------------------------
 
-	rm(list=ls())
-	library(knitr)
-	setwd('C:/Registre/.../trunk/RSamleDok')
-	InfarktDataDum <- read.table('C:/Registre/Nakke/data/NakkeAlleVar2015-05-20.csv', sep=';', header=T)
-	InfarktData <- InfarktDataDum	#[3000:6000, ]
-#InfarktData <- read.table('C:/Registre/Hjerteinfarkt/data/Aarsrapportdata2013.csv', sep=';', header=T)
-	reshID <- 104284	#106581 (Orkdal)	#104284 StOlav
+...
+#---------------- Tulledata ----------------------------------------
 
-	libkat <- 'C:/Registre/Rlib/trunk/'		#del av sti til bibliotekkatalog, før /lib/r/<funksjon.R>
-	libkatTex <- libkat
 
-	source("../RAndeler/InfarktFigAndeler.R", encoding="UTF-8")
-	source("../RMeanMed/InfarktFigMeanMed.R", encoding="UTF-8")
+	RegData <- NakkeRegDataSQL()
+	RegData <- NakkePreprosess(RegData=RegData)
 
-	knit('InfarktSamleDok.Rnw')
-
-#--------------------------------------------------------
-#Variable som kan være greit å ha definert i grunnlagsfila:
-
-#SlagData$TidSymptInnlegg <- as.numeric(difftime(SlagData$Innleggelsestidspunkt, SlagData$Symptomdebut,
-#			units='hours'))
-#SlagData <- SlagData[which(SlagData$Trombolyse %in% c(1,3)), ]
-#SlagData$TidSymptTrombolyse <- as.numeric(difftime(SlagData$TrombolyseStarttid, SlagData$Symptomdebut,
-#			units='hours'))
-#SlagData <- SlagData[which(SlagData$Trombolyse %in% c(1,3)), ]
-#SlagData$TidInnleggTrombolyse <- as.numeric(difftime(SlagData$TrombolyseStarttid,
-#			SlagData$Innleggelsestidspunkt, units='hours'))
-#SlagData$erMann
+	library(synthpop)
+	NakkeDataSyn <- syn(RegData, method = "sample", seed = 500)
+	RegData <- NakkeDataSyn$syn
 
 #------------------------------ Andeler flere var --------------------------
 #------------------------------ (Fordelinger) --------------------------
 rm(list=ls())
 library(Nakke)
-NakkeData <- read.table('C:/Registre/Nakke/data/AlleVarNum2016-01-18Staging.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
-RegData <- NakkeData
+NakkeData <- read.table('C:/Registre/Nakke/NakkeSQL_2016-05-10prod.csv', sep=';', header=T) #Nakke18012016, AlleVarNum2016-01-04Num
+library(synthpop)
+#variable <- names(NakkeData)[-which(names(NakkeData)=='OprDato')]
+NakkeDataSyn <- syn(NakkeData[ ,variable], method = "sample", seed = 500)
+RegData <- cbind(OprDato = NakkeData$OprDato, NakkeDataSyn$syn)
 # Inndata til funksjon:
 #...NB: SkjemaID
 reshID <- 601161 #De tre med flest reg:
@@ -55,10 +40,10 @@ valgtVar <- 'EqAngstPreOp'	#Må velge... Alder, AntallNivaaOpr, Antibiotika, Arb
       #SivilStatus, Saardren,SmertestillBrukPreOp, SymptVarighetArmer, SymptVarighetNakkeHode,
       #TidlOpr, TidlOprAntall, UforetrygdPreOp,Utdanning
 
-outfile <- paste(valgtVar, '_ford.png', sep='')	#''	#Navn angis av Jasper
+outfile <- paste(valgtVar, '_fordSyn.png', sep='')	#''	#Navn angis av Jasper
 setwd("C:/ResultattjenesteGIT/Nakke/")
 
-FigAndeler(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
+FigAndeler(RegData=RegData, datoFra=datoFra, valgtVar=valgtVar,
            datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
            reshID=reshID, enhetsUtvalg=enhetsUtvalg, hentData=0, outfile=outfile)
 
@@ -105,8 +90,8 @@ valgtVar <- 'SmertestillPreOp'	#Må velge... Alder, AndreRelSykdommer, Antibioti
 		  #Verre3mnd, Verre12mnd, OprIndikMyelopati, OprIndikSmerter, PerOpEnhverKompl, Roker, Saardren,
 		  #SmertestillPreOp, SymptVarighetNakkeHode, SymptVarighetSmerterUker, UforetrygdPreOp, Utdanning
 
-outfile <- paste(valgtVar, '.png', sep='')	#''	#Navn angis av Jasper
-FigAndelTid(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
+outfile <- paste(valgtVar, 'Syn.png', sep='')	#''	#Navn angis av Jasper
+FigAndelTid(RegData=RegData, datoFra=datoFra, valgtVar=valgtVar,
            datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
            reshID=reshID, enhetsUtvalg=enhetsUtvalg, outfile=outfile)
 
@@ -152,8 +137,8 @@ valgtVar <- 'NRSsmerteArmEndr12mnd'	#Må velge... Alder, AndreRelSykdommer, Anti
 		  #NRSsmerteArmEndr12mnd,Verre3mnd, Verre12mnd, OprIndikMyelopati, Roker, Saardren,
 		  #SmertestillPreOp, SymptVarighetNakkeHode, SymptVarighetSmerterUker, UforetrygdPreOp, Utdanning
 setwd()
-outfile <- paste(valgtVar, '_Shus.png', sep='')	#''	#Navn angis av Jasper
-FigAndelerGrVar(RegData=NakkeData, datoFra=datoFra, valgtVar=valgtVar,
+outfile <- paste(valgtVar, '_ShusSyn.png', sep='')	#''	#Navn angis av Jasper
+FigAndelerGrVar(RegData=RegData, datoFra=datoFra, valgtVar=valgtVar,
            datoTil=datoTil, minald=minald, maxald=maxald, erMann=erMann,
            reshID=reshID, enhetsUtvalg=enhetsUtvalg, outfile=outfile)
 
