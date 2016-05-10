@@ -1,6 +1,7 @@
 #' Henter data registrert for Degenerativ Nakke
 #'
-#' Henter data for Degenerativ Nakke fra "staging"
+#' Henter data for Degenerativ Nakke fra "staging"-database. 
+#' Kan benytte datoFra og datoFra som input.
 #'
 #' @inheritParams FigAndeler
 #'
