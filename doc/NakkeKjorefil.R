@@ -10,8 +10,8 @@
 	RegData <- NakkePreprosess(RegData=RegData)
 
 	library(synthpop)
-	NakkeDataSyn <- syn(RegData, method = "sample", seed = 500)
-	RegData <- NakkeDataSyn$syn
+	RegDataSyn <- syn(RegData, method = "sample", seed = 500)
+	RegData <- RegDataSyn$syn
 
 #------------------------------ Andeler flere var --------------------------
 #------------------------------ (Fordelinger) --------------------------
