@@ -20,7 +20,8 @@ nakkeStandardInput <- function(id, label = "Brukervalg") {
                sliderInput(ns("alder"), label = h3("Alder"), min = 0,
                            max = 130, value = c(0, 130)
                ),
-               dateRangeInput(ns("periode"), label = h3("Periode"))
+               dateRangeInput(ns("periode"), label = h3("Periode"),
+                              separator="til", language="nb")
           )
      )
 }
