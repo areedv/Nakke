@@ -7,7 +7,7 @@
 #' @param session
 #' @export
 
-nakkeStandard <- function(input, output, session) {
+nakkeStandard <- function(input, output, session, reportName, ...) {
      erMann <- reactive({
           input$erMann
      })
@@ -17,6 +17,14 @@ nakkeStandard <- function(input, output, session) {
      periode <- reactive({
           input$periode
      })
-     ucValues <- list(erMann=erMann, alder=alder, periode=periode)
-     return(erMann)
+     # for checking which report, can session be used to grab id?
+     # test with explicit naming first:
+     if (reportName == "report1") {
+          get_uc_outside_namespace_from_additional_args
+          output$reportPlot <- renderPlot({
+               call_fig_function
+          })
+
+     }
+
 }
