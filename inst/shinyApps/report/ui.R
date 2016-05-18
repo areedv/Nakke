@@ -10,7 +10,7 @@ shinyUI(fluidPage(tabsetPanel(
                    nakkeStandardInput("uc1"),
 
                    mainPanel(
-                        textOutput("r1Text")
+                        plotOutput("report1Plot")
                    )
               )),
      tabPanel("Report2",
@@ -18,7 +18,7 @@ shinyUI(fluidPage(tabsetPanel(
                    headerPanel("UI"),
                    nakkeStandardInput("uc2"),
                    mainPanel(
-                        textOutput("r2Text")
+                        plotOutput("report2Plot")
                    )
               )),
      tabPanel("Report3",

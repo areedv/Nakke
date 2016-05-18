@@ -4,14 +4,14 @@
 
 shinyServer(function(input, output) {
 
-     nakkeStandard1 <- callModule(nakkeStandard, "uc1")
-     nakkeStandard2 <- callModule(nakkeStandard, "uc2")
+     nakkeStandard1 <- callModule(nakkeStandard, "uc1", reportName="report1")
+     nakkeStandard2 <- callModule(nakkeStandard, "uc2", reportName="report2")
 
-     output$r1Text <- renderText({
+     output$report1Plot <- renderPlot({
           nakkeStandard1()
      })
 
-     output$r2Text <- renderText({
+     output$report2Plot <- renderPlot({
           nakkeStandard2()
      })
 
