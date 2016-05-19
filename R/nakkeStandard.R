@@ -7,19 +7,11 @@
 #' @param session
 #' @export
 
-nakkeStandard <- function(input, output, session, reportName) {
-     #erMann <- reactive({
-     #     input$erMann
-     #})
-     #alder <- reactive({
-     #     input$alder
-     #})
-     #periode <- reactive({
-     #     input$periode
-     #})
-     # for checking which report, can session be used to grab id?
-     # test with explicit naming first:
-     if (reportName == "report1") {
+nakkeStandard <- function(input, output, session) {
+     sessionName <- session$ns("name")
+     # namespace id comes with an extra '-name'. Remove it
+     sessionName <- gsub("-name", "", sessionName)
+     if (sessionName == "report1") {
           #get_uc_outside_namespace_from_additional_args
           plotObj <- reactive({
                FigAndeler(RegData=RegData,
@@ -30,7 +22,7 @@ nakkeStandard <- function(input, output, session, reportName) {
                           reshID = 103469)
           })
      }
-     if (reportName == "report2") {
+     if (sessionName == "report2") {
           #get_uc_outside_namespace_from_additional_args
           plotObj <- reactive({
                FigAndeler(RegData=RegData,

@@ -4,8 +4,9 @@
 
 shinyServer(function(input, output) {
 
-     nakkeStandard1 <- callModule(nakkeStandard, "uc1", reportName="report1")
-     nakkeStandard2 <- callModule(nakkeStandard, "uc2", reportName="report2")
+     # reuse server module, but with different namespaces
+     nakkeStandard1 <- callModule(nakkeStandard, "report1")
+     nakkeStandard2 <- callModule(nakkeStandard, "report2")
 
      output$report1Plot <- renderPlot({
           nakkeStandard1()
