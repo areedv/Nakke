@@ -7,16 +7,20 @@
 #' @param session
 #' @export
 
-nakkeStandard <- function(input, output, session) {
+nakkeStandard <- function(input, output, session, andelerValgtVar) {
   sessionName <- session$ns("name")
   # namespace id comes with an extra '-name'. Remove it
   sessionName <- gsub("-name", "", sessionName)
   if (sessionName == "figAndeler") {
+    cat(class(andelerValgtVar))
+    cat('\n')
     #get_uc_outside_namespace_from_additional_args
     plotObj <- reactive({
       FigAndeler(RegData=RegData,
-                 valgtVar = "Alder",
-                 erMann=as.numeric(input$erMann),
+                 valgtVar = andelerValgtVar(),
+                 datoFra = input$periode[1],
+                 datoTil = input$periode[2],
+                 erMann = as.numeric(input$erMann),
                  minald = as.numeric(input$alder[1]),
                  maxald = as.numeric(input$alder[2]),
                  reshID = as.numeric(input$avdeling)
