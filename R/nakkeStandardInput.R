@@ -11,6 +11,10 @@ nakkeStandardInput <- function(id, label = "Brukervalg") {
   # create namespace
   ns <- NS(id)
 
+  # make values and lables for reshID
+  reshList <- setNames(as.list(unique(RegData$AVD_RESH)),
+                       levels(RegData$Avdeling))
+
   tagList(
     selectInput(ns("erMann"),
                 label=h3("Kjønn:"),
@@ -20,6 +24,7 @@ nakkeStandardInput <- function(id, label = "Brukervalg") {
                 max = 130, value = c(0, 130)
     ),
     dateRangeInput(ns("periode"), label = h3("Periode"),
-                   separator="til", language="nb")
+                   separator="til", language="nb"),
+    selectInput(ns("avdeling"), label = h3("Avdeling"), reshList)
   )
 }
