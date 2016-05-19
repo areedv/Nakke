@@ -40,7 +40,12 @@ shinyUI(fluidPage(tabsetPanel(
                              "Antalltidligereoperasjoner"="TidlOprAntall",
                              "Søktuføretrygd"="UforetrygdPreOp",
                              "Utdanningsnivå"="Utdanning"),
-                           selected = "Alder")
+                           selected = "Alder"),
+               selectInput("enhetsUtvalg", "Enhetsutvalg:",
+                           c("Hele landet" = 0,
+                             "Egen enhet mot resten av landet" = 1,
+                             "Egen enhet" = 2),
+                           selected = 1)
              ),
              mainPanel(
                plotOutput("report1Plot")

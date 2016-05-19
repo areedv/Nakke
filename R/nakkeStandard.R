@@ -7,7 +7,8 @@
 #' @param session
 #' @export
 
-nakkeStandard <- function(input, output, session, andelerValgtVar) {
+nakkeStandard <- function(input, output, session, andelerValgtVar,
+                          enhetsUtvalg) {
   sessionName <- session$ns("name")
   # namespace id comes with an extra '-name'. Remove it
   sessionName <- gsub("-name", "", sessionName)
@@ -21,6 +22,7 @@ nakkeStandard <- function(input, output, session, andelerValgtVar) {
                  erMann = as.numeric(input$erMann),
                  minald = as.numeric(input$alder[1]),
                  maxald = as.numeric(input$alder[2]),
+                 enhetsUtvalg = enhetsUtvalg(),
                  reshID = as.numeric(input$avdeling)
       )
     })

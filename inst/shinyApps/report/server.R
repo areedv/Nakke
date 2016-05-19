@@ -6,7 +6,8 @@ shinyServer(function(input, output) {
 
   # reuse server module, but with different namespaces
   nakkeStandardFigAndeler <- callModule(nakkeStandard, "figAndeler",
-                                        reactive(input$andelerValgtVar))
+                                        reactive(input$andelerValgtVar),
+                                        reactive(input$enhetsUtvalg))
   nakkeStandard2 <- callModule(nakkeStandard, "report2")
 
   output$report1Plot <- renderPlot({
