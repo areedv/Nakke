@@ -19,7 +19,8 @@ nakkeStandard <- function(input, output, session) {
                           erMann=as.numeric(input$erMann),
                           minald = as.numeric(input$alder[1]),
                           maxald = as.numeric(input$alder[2]),
-                          reshID = 103469)
+                          reshID = as.numeric(input$avdeling)
+               )
           })
      }
      if (sessionName == "report2") {
