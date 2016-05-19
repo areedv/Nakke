@@ -4,27 +4,28 @@
 
 shinyServer(function(input, output) {
 
-     # reuse server module, but with different namespaces
-     nakkeStandardFigAndeler <- callModule(nakkeStandard, "figAndeler")
-     nakkeStandard2 <- callModule(nakkeStandard, "report2")
+  # reuse server module, but with different namespaces
+  nakkeStandardFigAndeler <- callModule(nakkeStandard, "figAndeler",
+                                        reactive(input$andelerValgtVar))
+  nakkeStandard2 <- callModule(nakkeStandard, "report2")
 
-     output$report1Plot <- renderPlot({
-          nakkeStandardFigAndeler()
-     })
+  output$report1Plot <- renderPlot({
+    nakkeStandardFigAndeler()
+  })
 
-     output$report2Plot <- renderPlot({
-          nakkeStandard2()
-     })
+  output$report2Plot <- renderPlot({
+    nakkeStandard2()
+  })
 
-     output$r3Text <- renderText({
-          input$erMann
-     })
+  output$r3Text <- renderText({
+    input$erMann
+  })
 
-     output$r4Text <- renderText({
-          input$erMann
-     })
+  output$r4Text <- renderText({
+    input$erMann
+  })
 
-     output$r5Text <- renderText({
-          input$erMann
-     })
+  output$r5Text <- renderText({
+    input$erMann
+  })
 })
