@@ -11,7 +11,7 @@ nakkeStandard <- function(input, output, session) {
      sessionName <- session$ns("name")
      # namespace id comes with an extra '-name'. Remove it
      sessionName <- gsub("-name", "", sessionName)
-     if (sessionName == "report1") {
+     if (sessionName == "figAndeler") {
           #get_uc_outside_namespace_from_additional_args
           plotObj <- reactive({
                FigAndeler(RegData=RegData,

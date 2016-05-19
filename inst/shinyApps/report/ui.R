@@ -4,11 +4,11 @@
 
 shinyUI(fluidPage(tabsetPanel(
 
-  tabPanel("Report1",
+  tabPanel("Andeler",
            pageWithSidebar(
-             headerPanel("UI"),
+             headerPanel("Brukervalg"),
              sidebarPanel(
-               nakkeStandardInput("report1")
+               nakkeStandardInput("figAndeler")
              ),
              mainPanel(
                plotOutput("report1Plot")
