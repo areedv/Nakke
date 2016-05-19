@@ -7,8 +7,9 @@ shinyUI(fluidPage(tabsetPanel(
   tabPanel("Report1",
            pageWithSidebar(
              headerPanel("UI"),
-             nakkeStandardInput("report1"),
-
+             sidebarPanel(
+               nakkeStandardInput("report1")
+             ),
              mainPanel(
                plotOutput("report1Plot")
              )
@@ -16,7 +17,9 @@ shinyUI(fluidPage(tabsetPanel(
   tabPanel("Report2",
            pageWithSidebar(
              headerPanel("UI"),
-             nakkeStandardInput("report2"),
+             sidebarPanel(
+               nakkeStandardInput("report2")
+             ),
              mainPanel(
                plotOutput("report2Plot")
              )
