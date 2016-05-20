@@ -4,21 +4,27 @@
 
 shinyServer(function(input, output) {
 
-  # reuse server module, but with different namespaces
+  # reuse server module, but with different namespaces and per report user
+  # controls outside namespace (if any)
   nakkeStandardFigAndeler <-
-    callModule(nakkeStandard, "figAndeler",
-               reactive(input$andelerValgtVar),
-               reactive(input$andelerEnhetsUtvalg))
+    callModule(nakkeStandard, "figAndeler", session = getDefaultReactiveDomain(),
+               valgtVar=reactive(input$andelerValgtVar),
+               enhetsUtvalg=reactive(input$andelerEnhetsUtvalg))
 
   nakkeStandardFigAndelerGrVar <-
     callModule(nakkeStandard, "figAndelerGrVar",
-               reactive(input$andelerGrVarValgtVar),
-               reactive(input$andelerGrVarEnhetsUtvalg))
+               valgtVar=reactive(input$andelerGrVarValgtVar),
+               enhetsUtvalg=reactive(input$andelerGrVarEnhetsUtvalg))
 
   nakkeStandardFigAndelTid <-
     callModule(nakkeStandard, "figAndelTid",
-               reactive(input$andelTidValgtVar),
-               reactive(input$andelTidEnhetsUtvalg))
+               valgtVar=reactive(input$andelTidValgtVar),
+               enhetsUtvalg=reactive(input$andelTidEnhetsUtvalg))
+
+  nakkeStandardFigGjsnGrVar <-
+    callModule(nakkeStandard, "figGjsnGrVar",
+               valgtVar=reactive(input$gjsnGrVarValgtVar),
+               valgtMaal=reactive(input$gjsnGrVarValgtMaal))
 
 
   output$andelerPlot <- renderPlot({
@@ -33,11 +39,7 @@ shinyServer(function(input, output) {
     nakkeStandardFigAndelTid()
   })
 
-  output$r4Text <- renderText({
-    input$erMann
-  })
-
-  output$r5Text <- renderText({
-    input$erMann
+  output$gjsnGrVarPlot <- renderPlot({
+    nakkeStandardFigGjsnGrVar()
   })
 })
