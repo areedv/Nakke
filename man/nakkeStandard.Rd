@@ -4,7 +4,7 @@
 \alias{nakkeStandard}
 \title{Server logic function for skiny Nakke}
 \usage{
-nakkeStandard(input, output, session, andelerValgtVar, enhetsUtvalg)
+nakkeStandard(input, output, session, valgtVar, enhetsUtvalg)
 }
 \arguments{
 \item{input}{}
