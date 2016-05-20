@@ -28,15 +28,15 @@ nakkeStandard <- function(input, output, session, valgtVar,
   }
   if (sessionName == "figAndelerGrVar") {
     plotObj <- reactive({
-      FigAndeler(RegData=RegData,
-                 valgtVar = valgtVar(),
-                 datoFra = input$periode[1],
-                 datoTil = input$periode[2],
-                 erMann=as.numeric(input$erMann),
-                 minald = as.numeric(input$alder[1]),
-                 maxald = as.numeric(input$alder[2]),
-                 enhetsUtvalg = enhetsUtvalg(),
-                 reshID = as.numeric(input$avdeling)
+      FigAndelerGrVar(RegData=RegData,
+                      valgtVar = valgtVar(),
+                      datoFra = input$periode[1],
+                      datoTil = input$periode[2],
+                      erMann=as.numeric(input$erMann),
+                      minald = as.numeric(input$alder[1]),
+                      maxald = as.numeric(input$alder[2]),
+                      enhetsUtvalg = enhetsUtvalg(),
+                      reshID = as.numeric(input$avdeling)
       )
     })
   }
