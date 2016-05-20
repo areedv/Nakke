@@ -17,14 +17,14 @@ nakkeStandardInput <- function(id, label = "Brukervalg") {
 
   tagList(
     selectInput(ns("erMann"),
-                label=h3("Kjønn:"),
+                label="Kjønn:",
                 c("Begge"=2, "Menn"=1, "Kvinner"=0)
     ),
-    sliderInput(ns("alder"), label = h3("Alder"), min = 0,
+    sliderInput(ns("alder"), label = "Alder", min = 0,
                 max = 130, value = c(0, 130)
     ),
     dateRangeInput(ns("periode"), start = "2012-01-01", end = Sys.Date(),
-                   label = h3("Periode"), separator="til", language="nb"),
-    selectInput(ns("avdeling"), label = h3("Avdeling"), reshList)
+                   label = "Periode", separator="til", language="nb"),
+    selectInput(ns("avdeling"), label = "Avdeling", reshList)
   )
 }
