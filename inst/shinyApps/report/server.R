@@ -8,14 +8,14 @@ shinyServer(function(input, output) {
   nakkeStandardFigAndeler <- callModule(nakkeStandard, "figAndeler",
                                         reactive(input$andelerValgtVar),
                                         reactive(input$enhetsUtvalg))
-  nakkeStandard2 <- callModule(nakkeStandard, "report2")
+  nakkeStandardFigAndelerGrVar <- callModule(nakkeStandard, "figAndelerGrVar")
 
   output$andelerPlot <- renderPlot({
     nakkeStandardFigAndeler()
   })
 
-  output$report2Plot <- renderPlot({
-    nakkeStandard2()
+  output$andelerGrVarPlot <- renderPlot({
+    nakkeStandardFigAndelerGrVar()
   })
 
   output$r3Text <- renderText({

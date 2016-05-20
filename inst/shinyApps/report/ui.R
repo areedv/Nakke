@@ -22,14 +22,14 @@ shinyUI(fluidPage(tabsetPanel(
                plotOutput("andelerPlot")
              )
            )),
-  tabPanel("Report2",
+  tabPanel("AndelerGrVar",
            pageWithSidebar(
-             headerPanel("UI"),
+             headerPanel(title = h3("Brukervalg")),
              sidebarPanel(
-               nakkeStandardInput("report2")
+               nakkeStandardInput("figAndelerGrVar")
              ),
              mainPanel(
-               plotOutput("report2Plot")
+               plotOutput("andelerGrVarPlot")
              )
            )),
   tabPanel("Report3",
