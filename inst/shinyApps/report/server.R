@@ -5,10 +5,21 @@
 shinyServer(function(input, output) {
 
   # reuse server module, but with different namespaces
-  nakkeStandardFigAndeler <- callModule(nakkeStandard, "figAndeler",
-                                        reactive(input$andelerValgtVar),
-                                        reactive(input$enhetsUtvalg))
-  nakkeStandardFigAndelerGrVar <- callModule(nakkeStandard, "figAndelerGrVar")
+  nakkeStandardFigAndeler <-
+    callModule(nakkeStandard, "figAndeler",
+               reactive(input$andelerValgtVar),
+               reactive(input$andelerEnhetsUtvalg))
+
+  nakkeStandardFigAndelerGrVar <-
+    callModule(nakkeStandard, "figAndelerGrVar",
+               reactive(input$andelerGrVarValgtVar),
+               reactive(input$andelerGrVarEnhetsUtvalg))
+
+  nakkeStandardFigAndelTid <-
+    callModule(nakkeStandard, "figAndelTid",
+               reactive(input$andelTidValgtVar),
+               reactive(input$andelTidEnhetsUtvalg))
+
 
   output$andelerPlot <- renderPlot({
     nakkeStandardFigAndeler()
@@ -18,8 +29,8 @@ shinyServer(function(input, output) {
     nakkeStandardFigAndelerGrVar()
   })
 
-  output$r3Text <- renderText({
-    input$erMann
+  output$andelTidPlot <- renderPlot({
+    nakkeStandardFigAndelTid()
   })
 
   output$r4Text <- renderText({

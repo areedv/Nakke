@@ -12,7 +12,7 @@ shinyUI(fluidPage(tabsetPanel(
                selectInput("andelerValgtVar", "Variabel:",
                            valgtVarFigAndeler(),
                            selected = "Alder"),
-               selectInput("enhetsUtvalg", "Enhetsutvalg:",
+               selectInput("andelerEnhetsUtvalg", "Enhetsutvalg:",
                            c("Hele landet" = 0,
                              "Egen enhet mot resten av landet" = 1,
                              "Egen enhet" = 2),
@@ -26,23 +26,36 @@ shinyUI(fluidPage(tabsetPanel(
            pageWithSidebar(
              headerPanel(title = h3("Brukervalg")),
              sidebarPanel(
-               nakkeStandardInput("figAndelerGrVar")
+               nakkeStandardInput("figAndelerGrVar"),
+               selectInput("andelerGrVarValgtVar", "Variabel:",
+                           valgtVarFigAndelerGrVar(),
+                           selected = "Alder"),
+               selectInput("andelerGrVarEnhetsUtvalg", "Enhetsutvalg:",
+                           c("Hele landet" = 0,
+                             "Egen enhet mot resten av landet" = 1,
+                             "Egen enhet" = 2),
+                           selected = 1)
              ),
              mainPanel(
                plotOutput("andelerGrVarPlot")
              )
            )),
-  tabPanel("Report3",
+  tabPanel("AndelTid",
            pageWithSidebar(
-             headerPanel("UI"),
+             headerPanel(title=h3("Brukervalg")),
              sidebarPanel(
-               selectInput("erMann",
-                           "Kjønn:",
-                           c("Begge"=2, "Menn"=1, "Kvinner"=0)
-               )
+               nakkeStandardInput("figAndelTid"),
+               selectInput("andelTidValgtVar", "Variabel:",
+                           valgtVarFigAndelTid(),
+                           selected = "Alder"),
+               selectInput("andelTidEnhetsUtvalg", "Enhetsutvalg:",
+                           c("Hele landet" = 0,
+                             "Egen enhet mot resten av landet" = 1,
+                             "Egen enhet" = 2),
+                           selected = 1)
              ),
              mainPanel(
-               textOutput("r3Text")
+               plotOutput("andelTidPlot")
              )
            )),
   tabPanel("Report4",
