@@ -58,30 +58,21 @@ shinyUI(fluidPage(tabsetPanel(
                plotOutput("andelTidPlot")
              )
            )),
-  tabPanel("Report4",
+  tabPanel("GjsnGrVar",
            pageWithSidebar(
-             headerPanel("UI"),
+             headerPanel(title = h3("Brukervalg")),
              sidebarPanel(
-               selectInput("erMann",
-                           "Kjønn:",
-                           c("Begge"=2, "Menn"=1, "Kvinner"=0)
-               )
+               nakkeStandardInput("figGjsnGrVar"),
+               selectInput("gjsnGrVarValgtVar", "Variabel:",
+                           valgtVarFigGjsnGrVar(),
+                           selected = "Alder"),
+               selectInput("gjsnGrVarValgtMaal", "Sentralmål:",
+                           c("Gjennomsnitt" = "Gjsn",
+                             "Median" = "Med"),
+                           selected = "Gjsn")
              ),
              mainPanel(
-               textOutput("r4Text")
-             )
-           )),
-  tabPanel("Report5",
-           pageWithSidebar(
-             headerPanel("UI"),
-             sidebarPanel(
-               selectInput("erMann",
-                           "Kjønn:",
-                           c("Begge"=2, "Menn"=1, "Kvinner"=0)
-               )
-             ),
-             mainPanel(
-               textOutput("r5Text")
+               plotOutput("gjsnGrVarPlot")
              )
            ))
 )
