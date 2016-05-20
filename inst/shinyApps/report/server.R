@@ -10,7 +10,7 @@ shinyServer(function(input, output) {
                                         reactive(input$enhetsUtvalg))
   nakkeStandard2 <- callModule(nakkeStandard, "report2")
 
-  output$report1Plot <- renderPlot({
+  output$andelerPlot <- renderPlot({
     nakkeStandardFigAndeler()
   })
 

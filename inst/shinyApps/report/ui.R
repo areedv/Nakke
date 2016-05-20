@@ -19,7 +19,7 @@ shinyUI(fluidPage(tabsetPanel(
                            selected = 1)
              ),
              mainPanel(
-               plotOutput("report1Plot")
+               plotOutput("andelerPlot")
              )
            )),
   tabPanel("Report2",
