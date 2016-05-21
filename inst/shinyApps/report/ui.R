@@ -2,6 +2,8 @@
 # This is the user-interface definition for the 'report' Shiny web application
 # for 'Nakke'
 
+data("RegData")
+
 shinyUI(fluidPage(tabsetPanel(
 
   tabPanel("Andeler",
