@@ -13,13 +13,18 @@ makeSampleData <- function(realRegData, saveSampleDataInPackage) {
 
   # make fake hospital/dept names consistent with reshIDs
   sampleRegData$Avdeling <- NULL
-  sampleRegData$Avdeling <- rep("navnløs", length(sampleRegData$AVD_RESH))
+  sampleRegData$SykehusNavn <- NULL
+  sampleRegData$Avdeling <-
+    rep("navnløsAvd", length(sampleRegData$AVD_RESH))
+  sampleRegData$SykehusNavn <-
+    rep("navnløsSh", length(sampleRegData$AVD_RESH))
   depts <- levels(factor(sampleRegData$AVD_RESH))
   baseName <- rep("shusAvd", length(depts))
   ownName <- paste0(baseName, LETTERS[1:length(depts)])
   for (i in 1:length(depts)) {
     ind <- which(sampleRegData$AVD_RESH == depts[i])
     sampleRegData$Avdeling[ind] <- ownName[i]
+    sampleRegData$SykehusNavn[ind] <- ownName[i]
   }
 
   # save data if requested
