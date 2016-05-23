@@ -10,6 +10,12 @@ makeSampleData <- function(realRegData, saveSampleDataInPackage) {
 
   # synpop or whatever method to flip and turn orignal data
   sampleRegData <- realRegData
+  # not implemented just yet
+  if (1==0) {
+    RegData <- NakkeRegDataSQL()
+    RegDataSyn <- synthpop::syn(RegData, method = "sample", seed = 500)
+    sampleRegData <- RegDataSyn$syn
+  }
 
   # make fake hospital/dept names consistent with reshIDs
   sampleRegData$Avdeling <- NULL
