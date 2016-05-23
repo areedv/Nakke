@@ -4,6 +4,11 @@
 
 data("RegData")
 
+# not implemented just yet, wait until sample data without preprocessing
+if (1==0) {
+  RegData <- NakkePreprosess(RegData=RegData)
+}
+
 shinyUI(fluidPage(tabsetPanel(
 
   tabPanel("Andeler",
