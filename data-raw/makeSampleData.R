@@ -6,7 +6,7 @@
 #' @param saveSampleDataInPackage Logical if TRUE will overwrite any existing
 #' @return sampleRegData Data frame of sample data
 
-makeSampleData <- function(realRegData, saveSampleDataInPackage) {
+makeSampleData <- function(realRegData, saveSampleDataInPackage=FALSE) {
 
   # synpop or whatever method to flip and turn orignal data
   sampleRegData <- realRegData
