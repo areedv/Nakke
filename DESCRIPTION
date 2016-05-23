@@ -18,6 +18,6 @@ LazyData: TRUE
 Imports:
     knitr,
     xtable
-Suggests:
+Suggests: synthpop
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
