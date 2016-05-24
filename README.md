@@ -25,7 +25,6 @@ Install this package:
 ```r
 devtools::install_github("Rapporteket/Nakke")
 ```
-
 ### Note
 Communicating through a proxy might cause the above install commands to
 fail. If so, try the following prior to the above install commands:
