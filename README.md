@@ -42,8 +42,7 @@ system the package is being installed on
 Reports in this package can be tested with sample data provided and Shiny:
 
 ```r
-library(Nakke)
-runShinyAppReports()
+Nakke::runShinyAppReports()
 ```
 
 # Develop
