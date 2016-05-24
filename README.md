@@ -27,19 +27,21 @@ devtools::install_github("Rapporteket/Nakke")
 ```
 
 ## Note
-Communicating through a proxy might cause the above install command to
-fail. If so, try the following prior to the above install command:
+Communicating through a proxy might cause the above install commands to
+fail. If so, try the following prior to the above install commands:
 
-  library(httr)
-  set_config(
-    use_proxy(url="18.91.12.23", port=8080, username="user",password="passwd")
-  )
+```r
+library(httr)
+set_config(
+  use_proxy(url="18.91.12.23", port=8080, username="user",password="passwd")
+)
+```
 
 replacing the example parameter values with whatever applies for the
 system the package is being installed on
 
 # Test it
-Reports in this package can be tested with sample data provided and Shiny:
+Reports in this package can be tested with package sample data and Shiny:
 
 ```r
 Nakke::runShinyAppReports()
