@@ -1,5 +1,5 @@
-# Install
-The current package can be fetched directly from your Rstudio session. If not already
+## Install
+The current package can be fetched directly from your R session. If not already
 present, first install the devtools-package from your R terminal:
 
 ```r
@@ -26,26 +26,28 @@ Install this package:
 devtools::install_github("Rapporteket/Nakke")
 ```
 
-## Note
-Communicating through a proxy might cause the above install command to
-fail. If so, try the following prior to the above install command:
+### Note
+Communicating through a proxy might cause the above install commands to
+fail. If so, try the following prior to the above install commands:
 
-  library(httr)
-  set_config(
-    use_proxy(url="18.91.12.23", port=8080, username="user",password="passwd")
-  )
+```r
+library(httr)
+set_config(
+  use_proxy(url="18.91.12.23", port=8080, username="user",password="passwd")
+)
+```
 
 replacing the example parameter values with whatever applies for the
 system the package is being installed on
 
-# Test it
-Reports in this package can be tested with sample data provided and Shiny:
+## Test it
+Reports in this package can be tested with package sample data and Shiny:
 
 ```r
 Nakke::runShinyAppReports()
 ```
 
-# Develop
+## Develop
 Contributors submit their code to the rel (release) branch which is
 subject to testing at Rapporteket. Upon acceptance rel will me merged to
 the master branch and tagged
