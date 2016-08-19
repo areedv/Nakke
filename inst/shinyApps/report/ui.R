@@ -2,6 +2,8 @@
 # This is the user-interface definition for the 'report' Shiny web application
 # for 'Nakke'
 
+require(rCharts)
+require(highcharter)
 data("RegData")
 
 # not implemented just yet, wait until sample data without preprocessing
@@ -26,7 +28,7 @@ shinyUI(fluidPage(tabsetPanel(
                            selected = 1)
              ),
              mainPanel(
-               plotOutput("andelerPlot")
+               highchartOutput("andelerPlot")
              )
            )),
   tabPanel("AndelerGrVar",
@@ -44,7 +46,7 @@ shinyUI(fluidPage(tabsetPanel(
                            selected = 1)
              ),
              mainPanel(
-               plotOutput("andelerGrVarPlot")
+               highchartOutput("andelerGrVarPlot")
              )
            )),
   tabPanel("AndelTid",

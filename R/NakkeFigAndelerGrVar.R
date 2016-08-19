@@ -436,4 +436,36 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
           if ( outfile != '') {dev.off()}
           #----------------------------------------------------------------------------------
      }
+     # make sensible data...
+     Ngrtxt <- Ngrtxt[sortInd]
+     AndelerGrSort <- round(AndelerGrSort, digits = 1)
+     
+     print(class(GrNavnSort))
+     
+     # to use extra data in tooltips, make a data series from data frame
+     df <- data.frame(y = as.vector(AndelerGrSort), N = Ngrtxt,
+                      stringsAsFactors = FALSE)
+     ds <- rlist::list.parse(df)
+     names(ds) <- NULL
+     
+     h1 <- highcharter::highchart() %>%
+       hc_title(text = paste(Tittel, utvalgTxt)) %>%
+       hc_xAxis(categories=GrNavnSort) %>%
+       hc_yAxis(title = list(text='Andel (%)'), plotBands = list(color=farger[2],
+                                                                 from=AndelHele,
+                                                                 to=AndelHele+.1)) %>%
+       hc_add_series(name = "Andeler",
+                     data = ds,
+                     type = "bar", color = farger[3]) %>%
+       hc_tooltip(formatter = JS("function() { return '<b>' + this.series.name +
+                              '</b><br>' +
+                              'Andel = ' + this.y + '<br>' +
+                              this.point.N; }")) %>%
+       hc_exporting(enabled = TRUE)
+     
+     print(as.vector(AndelerGrSort))
+     print(Ngrtxt)
+     print(GrNavnSort)
+     
+     return(h1)
 }

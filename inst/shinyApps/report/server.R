@@ -1,7 +1,8 @@
 # This is the server logic for the 'report' Shiny web application for 'Nakke'
 
 # load libs, scripts and data here, once
-
+require(rCharts)
+require(highcharter)
 shinyServer(function(input, output) {
 
   # reuse server module, but with different namespaces and per report user
@@ -27,12 +28,14 @@ shinyServer(function(input, output) {
                valgtMaal=reactive(input$gjsnGrVarValgtMaal))
 
 
-  output$andelerPlot <- renderPlot({
-    nakkeStandardFigAndeler()
+  output$andelerPlot <- renderHighchart({
+    h1 <- nakkeStandardFigAndeler()
+    return(h1)
   })
 
-  output$andelerGrVarPlot <- renderPlot({
-    nakkeStandardFigAndelerGrVar()
+  output$andelerGrVarPlot <- renderHighchart({
+    h1 <- nakkeStandardFigAndelerGrVar()
+    return(h1)
   })
 
   output$andelTidPlot <- renderPlot({
