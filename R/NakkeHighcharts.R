@@ -1,6 +1,6 @@
-#' Collection of functions to provide Highchart objects
+#' Provider of Highchart object
 #' 
-#' Yes, still a collection of functions...
+#' Provide Highchart object for Andeler
 #' 
 #' @inheritParams FigAndeler
 #' @return h1 Highchart object
@@ -48,9 +48,9 @@ AndelerHighchart <- function(hoved, AntHoved, NHoved, rest, AntRest, NRest,
 }
 
 
-#' Collection of functions to provide Highchart objects
+#' Provider of Highchart object
 #' 
-#' Yes, still a collection of functions...
+#' Provide Highchart object for AndelerGrVar
 #' 
 #' @inheritParams FigAndelerGrVar
 #' @return h1 Highchart object
