@@ -38,8 +38,15 @@ shinyServer(function(input, output) {
     return(h1)
   })
 
-  output$andelTidPlot <- renderPlot({
-    nakkeStandardFigAndelTid()
+  # default function statement:
+  #output$andelTidPlot <- renderPlot({
+  # Highchart function statement:
+  output$andelTidPlot <- renderHighchart({
+    # default call:
+    #nakkeStandardFigAndelTid()
+    # Highcahrts call:
+    h1 <- nakkeStandardFigAndelTid()
+    return(h1)
   })
 
   output$gjsnGrVarPlot <- renderPlot({
