@@ -461,6 +461,18 @@ if ( outfile != '') {dev.off()}
 #------------------------------------------------------------------------------
 
 }	#end else statement
+
+# prep data for Highcharts
+AndelHoved <- round(AndelHoved, digits = 1)
+AndelRest <- round(AndelRest, digits = 1)
+
+h1 <- AndelTidHighchart(Aartxt, AndelHoved, NAarHendHoved, NHovedRes,
+                        AndelRest,
+                        NAarHendRest, NSmlRes, Tittel, utvalgTxt, shtxt,
+                        smltxt, fargeHoved, fargeRest)
+
+return(h1)
+
 }	#end function
 
 
