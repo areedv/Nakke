@@ -64,7 +64,10 @@ shinyUI(fluidPage(tabsetPanel(
                            selected = 1)
              ),
              mainPanel(
-               plotOutput("andelTidPlot")
+               # default output:
+               #plotOutput("andelTidPlot")
+               # Highcharts output:
+               highchartOutput("andelTidPlot")
              )
            )),
   tabPanel("GjsnGrVar",
