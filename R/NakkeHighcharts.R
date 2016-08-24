@@ -69,14 +69,16 @@ AndelerGrVarHighchart <- function(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel,
     hc_subtitle(text = utvalgTxt) %>%
     hc_xAxis(categories=GrNavnSort,
              reversed = FALSE) %>%
-    hc_yAxis(title = list(text='Andel (%)')) %>%
+    hc_yAxis(title = list(text='Andel (%)'),
+             min = -0.01,
+             startOnTick = FALSE) %>%
     hc_add_series(name = "Andeler",
                   data = ds,
-                  type = "bar", color = farger[3]) %>%
-    hc_tooltip(formatter = JS("function() { return '<b>' + this.series.name +
-                              '</b><br>' +
-                              'Andel = ' + this.y + '<br>' +
-                              this.point.N; }")) %>%
+                  type = "bar",
+                  color = farger[3],
+                  tooltip = list(pointFormat='<b>Andel:</b>
+                                 {point.y:.1f}<br><b>N:</b>
+                                 {point.N}<br/>')) %>%
     hc_exporting(enabled = TRUE)
   
   # add global ratio
