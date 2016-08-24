@@ -439,7 +439,10 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
      
      # make sensible data for Highcharts...
      Ngrtxt <- Ngrtxt[sortInd]
-     AndelerGrSort <- round(AndelerGrSort, digits = 1)
+     Ngrtxt <- sub("N=", "", Ngrtxt)
+     #AndelerGrSort <- round(AndelerGrSort, digits = 1)
+     
+     print(AndelerGrSort)
      
      h1 <- AndelerGrVarHighchart(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel,
                                  utvalgTxt, GrNavnSort, farger)
