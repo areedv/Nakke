@@ -84,7 +84,7 @@ shinyUI(fluidPage(tabsetPanel(
                            selected = "Gjsn")
              ),
              mainPanel(
-               plotOutput("gjsnGrVarPlot")
+               highchartOutput("gjsnGrVarPlot")
              )
            ))
 )
