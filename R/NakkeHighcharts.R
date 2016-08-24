@@ -67,7 +67,8 @@ AndelerGrVarHighchart <- function(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel,
   h1 <- highcharter::highchart() %>%
     hc_title(text = Tittel) %>%
     hc_subtitle(text = utvalgTxt) %>%
-    hc_xAxis(categories=GrNavnSort) %>%
+    hc_xAxis(categories=GrNavnSort,
+             reversed = FALSE) %>%
     hc_yAxis(title = list(text='Andel (%)')) %>%
     hc_add_series(name = "Andeler",
                   data = ds,
@@ -165,7 +166,7 @@ GjsnGrVarHighchart <- function(Midt, N, Ngrtxt, tittel, utvalgTxt, GrNavnSort,
     hc_title(text = paste(tittel, "med 95% konfidensintervall")) %>%
     hc_subtitle(text = utvalgTxt) %>%
     hc_xAxis(categories = as.character(GrNavnSort),
-             reversed = TRUE) %>%
+             reversed = FALSE) %>%
     hc_yAxis(title = list(text=xaksetxt),
              min = -0.01,
              startOnTick = FALSE,
