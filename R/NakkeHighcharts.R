@@ -58,7 +58,6 @@ AndelerHighchart <- function(hoved, AntHoved, NHoved, rest, AntRest, NRest,
 
 AndelerGrVarHighchart <- function(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel,
                                   utvalgTxt, GrNavnSort, farger) {
-  
   # to use extra data in tooltips, make a data series from data frame
   df <- data.frame(y = as.vector(AndelerGrSort), N = Ngrtxt,
                    stringsAsFactors = FALSE)
@@ -92,6 +91,7 @@ AndelerGrVarHighchart <- function(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel,
   
   return(h1)
 }
+
 
 #' Provider of Highchart object
 #' 
@@ -140,6 +140,7 @@ AndelTidHighchart <- function(Aartxt, AndelHoved, NAarHendHoved, NHovedRes,
   
   return(h1)
 }
+
 
 #' Provider of Highchart object
 #' 
