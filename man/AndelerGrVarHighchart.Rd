@@ -2,7 +2,7 @@
 % Please edit documentation in R/NakkeHighcharts.R
 \name{AndelerGrVarHighchart}
 \alias{AndelerGrVarHighchart}
-\title{Collection of functions to provide Highchart objects}
+\title{Provider of Highchart object}
 \usage{
 AndelerGrVarHighchart(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel, utvalgTxt,
   GrNavnSort, farger)
@@ -11,6 +11,6 @@ AndelerGrVarHighchart(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel, utvalgTxt,
 h1 Highchart object
 }
 \description{
-Yes, still a collection of functions...
+Provide Highchart object for AndelerGrVar
 }
 

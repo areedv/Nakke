@@ -2,7 +2,7 @@
 % Please edit documentation in R/NakkeHighcharts.R
 \name{AndelerHighchart}
 \alias{AndelerHighchart}
-\title{Collection of functions to provide Highchart objects}
+\title{Provider of Highchart object}
 \usage{
 AndelerHighchart(hoved, AntHoved, NHoved, rest, AntRest, NRest, retn, subtxt,
   grtxt, shtxt, fargeHoved, fargeRest, medSml, Tittel)
@@ -11,6 +11,6 @@ AndelerHighchart(hoved, AntHoved, NHoved, rest, AntRest, NRest, retn, subtxt,
 h1 Highchart object
 }
 \description{
-Yes, still a collection of functions...
+Provide Highchart object for Andeler
 }
 
