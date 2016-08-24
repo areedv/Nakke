@@ -49,7 +49,8 @@ shinyServer(function(input, output) {
     return(h1)
   })
 
-  output$gjsnGrVarPlot <- renderPlot({
-    nakkeStandardFigGjsnGrVar()
+  output$gjsnGrVarPlot <- renderHighchart({
+    h1 <- nakkeStandardFigGjsnGrVar()
+    return(h1)
   })
 })
