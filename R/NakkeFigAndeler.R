@@ -688,47 +688,7 @@ FigAndeler  <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-1
                          subtxt, grtxt, shtxt, fargeHoved, fargeRest, medSml,
                          Tittel)
   
-  # make some sensible data format...
-  #   hoved <- round(as.numeric(Andeler$Hoved), digits = 1)
-  #   rest <- round(as.numeric(Andeler$Rest), digits = 1)
-  # 
-  #   if (retn == 'H') {
-  #     chartType <- "bar"
-  #   } else {
-  #     chartType <- "column"
-  #   }
-  #   # to use extra data in tooltips, make a data series from data frame
-  #   df <- data.frame(y = hoved, N = as.vector(AntHoved),
-  #                    stringsAsFactors = FALSE)
-  #   ds <- rlist::list.parse(df)
-  #   names(ds) <- NULL
-  # 
-  #   p1 <- highcharter::highchart() %>%
-  #     hc_title(text = Tittel) %>%
-  #     hc_xAxis(title = list(text=subtxt), categories=grtxt) %>%
-  #     hc_yAxis(title = list(text='Andel pasienter (%)')) %>%
-  #     hc_add_series(name = paste0(shtxt, " (N=", NHoved, ")"),
-  #                   data = ds,
-  #                   type = chartType, color = fargeHoved) %>%
-  #     hc_tooltip(formatter = JS("function() { return '<b>' + this.series.name +
-  #                               '</b><br>' +
-  #                               'Andel = ' + this.y + '<br>' +
-  #                               'N (' + this.x + ') = ' + this.point.N; }")) %>%
-  #     hc_exporting(enabled = TRUE)
-  #   if (medSml == 1) {
-  #     df <- data.frame(y = rest, N = as.vector(AntRest),
-  #                      stringsAsFactors = FALSE)
-  #     ds <- rlist::list.parse(df)
-  #     names(ds) <- NULL
-  #     p1 <- hc_add_series(p1, name = paste0("Landet forøvrig (N=", NRest, ")"),
-  #                         data = ds,
-  #                         type = "scatter", color = fargeRest,
-  #                         marker = list(symbol = "diamond", radius = 5))
-  #   }
-  # 
-  #   htmlwidgets::saveWidget(p1, "~/tmp/testWidget.html", selfcontained = FALSE)
-  
-  return(h1)
+return(h1)
   
   #return(UtData)
   
