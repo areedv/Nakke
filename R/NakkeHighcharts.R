@@ -1,5 +1,31 @@
 #' Provider of Highchart object
 #' 
+#' Provide Highchart object when no data
+#' 
+#' @param Tittel String Title to show in empty chart
+#' @param infoText String Text to shown in empty chart
+#' @return h1 Highchart object
+#' @export
+
+EmptyHighchart <- function(Tittel, utvalg = "", infoText = "Tomt...") {
+  
+  # the following does not work...
+  #hcLangOpts <- getOption("highcharter.lang")
+  #hcLangOpts$noData <- infoText
+  
+  h1 <- highcharter::highchart(hc_opts = list(lang=list(noData=infoText))) %>%
+    hc_title(text = Tittel) %>%
+    hc_subtitle(text = utvalg) %>%
+    hc_add_series(name = infoText,
+                  type ="bar",
+                  data = NULL)
+    
+  
+  return(h1)
+}
+
+#' Provider of Highchart object
+#' 
 #' Provide Highchart object for Andeler
 #' 
 #' @inheritParams FigAndeler
@@ -211,6 +237,7 @@ GjsnGrVarHighchart <- function(Midt, N, Ngrtxt, tittel, utvalgTxt, GrNavnSort,
                       enableMouseTracking = FALSE)
   
   h1 <- hc_exporting(h1, enabled = TRUE)
+  #htmlwidgets::saveWidget(h1, "~/tmp/FromRShiny.html", selfcontained = TRUE)
   
   return(h1)
 }
