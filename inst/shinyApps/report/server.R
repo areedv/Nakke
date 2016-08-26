@@ -3,6 +3,7 @@
 # load libs, scripts and data here, once
 require(rCharts)
 require(highcharter)
+
 shinyServer(function(input, output) {
 
   # reuse server module, but with different namespaces and per report user
