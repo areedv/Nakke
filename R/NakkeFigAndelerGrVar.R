@@ -397,6 +397,9 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
           text(0.5, 0.6, tekst, cex=1.2)
           legend('topleft',utvalgTxt, bty='n', cex=0.9, text.col=farger[1])
           if ( outfile != '') {dev.off()}
+          
+          # empty highchart, then
+          h1 <- EmptyHighchart(Tittel, utvalgTxt, tekst)
 
      } else {
 
@@ -435,17 +438,15 @@ FigAndelerGrVar <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='30
           par('fig'=c(0, 1, 0, 1))
           if ( outfile != '') {dev.off()}
           #----------------------------------------------------------------------------------
+          # make sensible data for Highcharts...
+          Ngrtxt <- Ngrtxt[sortInd]
+          Ngrtxt <- sub("N=", "", Ngrtxt)
+          Ngrtxt <- sub("N", "", Ngrtxt)
+          #AndelerGrSort <- round(AndelerGrSort, digits = 1)
+          
+          h1 <- AndelerGrVarHighchart(AndelerGrSort, Ngrtxt, AndelHele, N,
+                                      Tittel, utvalgTxt, GrNavnSort, farger)
      }
-     
-     # make sensible data for Highcharts...
-     Ngrtxt <- Ngrtxt[sortInd]
-     Ngrtxt <- sub("N=", "", Ngrtxt)
-     #AndelerGrSort <- round(AndelerGrSort, digits = 1)
-     
-     print(AndelerGrSort)
-     
-     h1 <- AndelerGrVarHighchart(AndelerGrSort, Ngrtxt, AndelHele, N, Tittel,
-                                 utvalgTxt, GrNavnSort, farger)
 
      return(h1)
 }
