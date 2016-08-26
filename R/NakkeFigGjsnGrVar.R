@@ -157,6 +157,9 @@ farger <- FigTypUt$farger
 	#text(0.5, 0.3, , cex=1.2)
 	legend('topleft',utvalgTxt, bty='n', cex=0.9, text.col=farger[1])
 if ( outfile != '') {dev.off()}
+	
+	# empty highchart, then
+	h1 <- EmptyHighchart(tittel, utvalgTxt, tekst)
 } else {
 
 #--------------------------------------------------------
@@ -246,8 +249,6 @@ mtext(utvalgTxt, side=3, las=1, cex=cexGrNavn*0.9, adj=0, col=farger[1], line=c(
 		length=0.5/max(pos), code=2, angle=90, lwd=1.5, col=farger[1])
 par('fig'=c(0, 1, 0, 1))
 if ( outfile != '') {dev.off()}
-#----------------------------------------------------------------------------------
-}
 
 ## make hc object
 
@@ -260,6 +261,10 @@ KIopp <- as.numeric(KIopp)
 h1 <- GjsnGrVarHighchart(Midt, N, Ngrtxt, tittel, utvalgTxt, GrNavnSort,
                          xaksetxt, KIHele, KIopp, KIned, MidtHele, farger,
                          deltittel)
+#----------------------------------------------------------------------------------
+}
+
+
 return(h1)
 
 }

@@ -599,6 +599,10 @@ FigAndeler  <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-1
     text(0.5, 0.6, 'Færre enn 5 registreringer i egen- eller sammenlikningsgruppa', cex=1.2)
     if ( outfile != '') {dev.off()}
     
+    # empty highchart, then
+    tekst='Færre enn 5 registreringer i egen- eller sammenlikningsgruppa'
+    h1 <- EmptyHighchart(Tittel, utvalgTxt, tekst)
+    
   } else {
     
     #-----------Figur---------------------------------------
@@ -667,26 +671,28 @@ FigAndeler  <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-1
     
     par('fig'=c(0, 1, 0, 1))
     if ( outfile != '') {dev.off()}
+    
+    #Beregninger som returneres fra funksjonen.
+    AndelerUt <- rbind(Andeler$Hoved, Andeler$Rest)
+    rownames(AndelerUt) <- c('Hoved', 'Rest')
+    AntallUt <- rbind(AntHoved, AntRest)
+    rownames(AntallUt) <- c('Hoved', 'Rest')
+    
+    UtData <- list(paste(toString(Tittel),'.', sep=''), AndelerUt, AntallUt, grtxt )
+    names(UtData) <- c('Tittel', 'Andeler', 'Antall', 'GruppeTekst')
+    
+    ## TEST WITH HIGHCHARTS
+    # make some sensible data format...
+    hoved <- round(as.numeric(Andeler$Hoved), digits = 1)
+    rest <- round(as.numeric(Andeler$Rest), digits = 1)
+    
+    # everything moved into its own function residing in NakkeHighcharts.R
+    h1 <- AndelerHighchart(hoved, AntHoved, NHoved, rest, AntRest, NRest, retn,
+                           subtxt, grtxt, shtxt, fargeHoved, fargeRest, medSml,
+                           Tittel)
   }
   
-  #Beregninger som returneres fra funksjonen.
-  AndelerUt <- rbind(Andeler$Hoved, Andeler$Rest)
-  rownames(AndelerUt) <- c('Hoved', 'Rest')
-  AntallUt <- rbind(AntHoved, AntRest)
-  rownames(AntallUt) <- c('Hoved', 'Rest')
   
-  UtData <- list(paste(toString(Tittel),'.', sep=''), AndelerUt, AntallUt, grtxt )
-  names(UtData) <- c('Tittel', 'Andeler', 'Antall', 'GruppeTekst')
-  
-  ## TEST WITH HIGHCHARTS
-  # make some sensible data format...
-  hoved <- round(as.numeric(Andeler$Hoved), digits = 1)
-  rest <- round(as.numeric(Andeler$Rest), digits = 1)
-  
-  # everything moved into its own function residing in NakkeHighcharts.R
-  h1 <- AndelerHighchart(hoved, AntHoved, NHoved, rest, AntRest, NRest, retn,
-                         subtxt, grtxt, shtxt, fargeHoved, fargeRest, medSml,
-                         Tittel)
   
 return(h1)
   

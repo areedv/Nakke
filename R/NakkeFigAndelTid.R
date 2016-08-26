@@ -392,6 +392,11 @@ farger <- FigTypUt$farger
 	text(0.5, 0.65, 'Færre enn 10 registreringer i hoved-', cex=1.2)
 	text(0.55, 0.6, 'eller sammenlikningsgruppe', cex=1.2)
 	if ( outfile != '') {dev.off()}
+	
+	# empty highchart, then
+	Tittel <- paste('variabel: ', valgtVar, sep='')
+	tekst='Færre enn 10 registreringer i hoved- eller sammenlikningsgruppe'
+	h1 <- EmptyHighchart(Tittel, utvalgTxt, tekst)
 } else {
 
 
@@ -458,9 +463,6 @@ mtext(utvalgTxt, side=3, las=1, cex=0.9, adj=0, col=fargeRest, line=c(3+0.8*((Nu
 
 par('fig'=c(0, 1, 0, 1))
 if ( outfile != '') {dev.off()}
-#------------------------------------------------------------------------------
-
-}	#end else statement
 
 # prep data for Highcharts
 AndelHoved <- round(AndelHoved, digits = 1)
@@ -470,6 +472,11 @@ h1 <- AndelTidHighchart(Aartxt, AndelHoved, NAarHendHoved, NHovedRes,
                         AndelRest,
                         NAarHendRest, NSmlRes, Tittel, utvalgTxt, shtxt,
                         smltxt, fargeHoved, fargeRest)
+#------------------------------------------------------------------------------
+
+}	#end else statement
+
+
 
 return(h1)
 
