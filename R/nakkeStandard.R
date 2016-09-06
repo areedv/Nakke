@@ -21,7 +21,7 @@ nakkeStandard <- function(input, output, session, valgtVar, enhetsUtvalg,
                  erMann = as.numeric(input$erMann),
                  minald = as.numeric(input$alder[1]),
                  maxald = as.numeric(input$alder[2]),
-                 enhetsUtvalg = enhetsUtvalg(),
+                 #enhetsUtvalg = enhetsUtvalg(),
                  reshID = as.numeric(input$avdeling)
       )
     })
