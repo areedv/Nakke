@@ -692,9 +692,11 @@ FigAndeler  <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-1
                            Tittel)
   }
   
-  
-  
-return(h1)
+  plotData <- data.frame(grtxt=grtxt, hoved=hoved,
+                         AntHoved=as.vector(AntHoved), rest=rest,
+                         AntRest=as.vector(AntRest)
+                         )
+  list(tableObj=plotData, plotObj=h1)
   
   #return(UtData)
   
