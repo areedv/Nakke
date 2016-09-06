@@ -11,25 +11,32 @@ if (1==0) {
   RegData <- NakkePreprosess(RegData=RegData)
 }
 
-shinyUI(fluidPage(tabsetPanel(
+shinyUI(navbarPage(title = "NKR NAKKE",
 
   tabPanel("Andeler",
-           pageWithSidebar(
-             headerPanel(title=h3("Brukervalg")),
+           #pageWithSidebar(
+             sidebarLayout(
+             #headerPanel(title=h3("Brukervalg")),
              sidebarPanel(
                nakkeStandardInput("figAndeler"),
                selectInput("andelerValgtVar", "Variabel:",
                            valgtVarFigAndeler(),
-                           selected = "Alder"),
-               selectInput("andelerEnhetsUtvalg", "Enhetsutvalg:",
-                           c("Hele landet" = 0,
-                             "Egen enhet mot resten av landet" = 1,
-                             "Egen enhet" = 2),
-                           selected = 1)
+                           selected = "Alder")
+#                selectInput("andelerEnhetsUtvalg", "Enhetsutvalg:",
+#                            c("Hele landet" = 0,
+#                              "Egen enhet mot resten av landet" = 1,
+#                              "Egen enhet" = 2),
+#                            selected = 1)
              ),
-             mainPanel(
-               highchartOutput("andelerPlot")
-             )
+             mainPanel(tabsetPanel(
+               tabPanel("Figur",
+                        highchartOutput("andelerPlot")
+               ),
+               tabPanel("Data",
+                        DT::dataTableOutput("andelerTable")
+                        #tags$h3("Tall her, da...")
+               )
+             ))
            )),
   tabPanel("AndelerGrVar",
            pageWithSidebar(
@@ -87,6 +94,6 @@ shinyUI(fluidPage(tabsetPanel(
                highchartOutput("gjsnGrVarPlot")
              )
            ))
-)
+
 )
 )

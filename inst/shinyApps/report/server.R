@@ -1,6 +1,7 @@
 # This is the server logic for the 'report' Shiny web application for 'Nakke'
 
 # load libs, scripts and data here, once
+require(Nakke)
 require(rCharts)
 require(highcharter)
 
@@ -10,8 +11,9 @@ shinyServer(function(input, output) {
   # controls outside namespace (if any)
   nakkeStandardFigAndeler <-
     callModule(nakkeStandard, "figAndeler", session = getDefaultReactiveDomain(),
-               valgtVar=reactive(input$andelerValgtVar),
-               enhetsUtvalg=reactive(input$andelerEnhetsUtvalg))
+               valgtVar=reactive(input$andelerValgtVar)
+               #enhetsUtvalg=reactive(input$andelerEnhetsUtvalg)
+               )
 
   nakkeStandardFigAndelerGrVar <-
     callModule(nakkeStandard, "figAndelerGrVar",
@@ -30,9 +32,16 @@ shinyServer(function(input, output) {
 
 
   output$andelerPlot <- renderHighchart({
-    h1 <- nakkeStandardFigAndeler()
-    return(h1)
+    out <- nakkeStandardFigAndeler()
+    return(out$plotObj)
   })
+  
+  output$andelerTable <- DT::renderDataTable(DT::datatable({
+    out <- nakkeStandardFigAndeler()
+    out$tableObj
+  }, rownames = FALSE, options = list(processing = FALSE,
+                                      paging = FALSE,
+                                      searching = FALSE)))
 
   output$andelerGrVarPlot <- renderHighchart({
     h1 <- nakkeStandardFigAndelerGrVar()
