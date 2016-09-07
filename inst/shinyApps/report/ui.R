@@ -11,7 +11,7 @@ if (1==0) {
   RegData <- NakkePreprosess(RegData=RegData)
 }
 
-shinyUI(navbarPage(title = "NKR NAKKE",
+shinyUI(navbarPage(title = "NKR NAKKE", theme = "bootstrap.css",
 
   tabPanel("Andeler",
            #pageWithSidebar(
