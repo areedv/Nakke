@@ -696,6 +696,9 @@ FigAndeler  <- function(RegData, valgtVar, datoFra='2012-01-01', datoTil='3000-1
                          AntHoved=as.vector(AntHoved), rest=rest,
                          AntRest=as.vector(AntRest)
                          )
+  names(plotData) <- c(subtxt, shtxt,
+                       paste0("N (", shtxt, ")"), "Landet forøvrig (%)",
+                       "N (Landet forøvrig)")
   list(tableObj=plotData, plotObj=h1)
   
   #return(UtData)
