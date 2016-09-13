@@ -26,5 +26,6 @@ nakkeStandardInput <- function(id, label = "Brukervalg") {
     dateRangeInput(ns("periode"), start = "2012-01-01", end = Sys.Date(),
                    label = "Periode", separator="til", language="nb"),
     selectInput(ns("avdeling"), label = "Avdeling", reshList)
+    #downloadButton(ns("downloadData"), label = "Last ned data")
   )
 }
