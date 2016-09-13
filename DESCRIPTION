@@ -16,9 +16,11 @@ Depends:
 License: GPL-2
 LazyData: TRUE
 Imports:
+    highcharter,
     htmltools,
+    htmlwidgets,
     knitr,
-    xtable
+    rlist
 Suggests:
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
