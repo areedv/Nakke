@@ -3,6 +3,8 @@
 export(AndelTidHighchart)
 export(AndelerGrVarHighchart)
 export(AndelerHighchart)
+export(AndelerTableContainer)
+export(EmptyHighchart)
 export(FigAndelTid)
 export(FigAndeler)
 export(FigAndelerGrVar)
