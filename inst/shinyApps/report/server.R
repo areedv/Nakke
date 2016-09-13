@@ -2,7 +2,6 @@
 
 # load libs, scripts and data here, once
 require(Nakke)
-require(rCharts)
 require(highcharter)
 
 shinyServer(function(input, output) {
@@ -39,9 +38,20 @@ shinyServer(function(input, output) {
   output$andelerTable <- DT::renderDataTable(DT::datatable({
     out <- nakkeStandardFigAndeler()
     out$tableObj
-  }, rownames = FALSE, options = list(processing = FALSE,
-                                      paging = FALSE,
-                                      searching = FALSE)))
+  }, container = AndelerTableContainer(groupText = names(out$tableObj)[1],
+                                       deptName = names(out$tableObj)[2]),
+  rownames = FALSE,
+  options = list(processing = FALSE,
+                 paging = FALSE,
+                 searching = FALSE)))
+  
+  output$downloadData <- downloadHandler(
+    filename = "test.csv",
+    content = function(file) {
+      out <- nakkeStandardFigAndeler()
+      write.table(out$tableObj, file)
+    }
+  )
 
   output$andelerGrVarPlot <- renderHighchart({
     h1 <- nakkeStandardFigAndelerGrVar()
