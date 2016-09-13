@@ -2,7 +2,6 @@
 # This is the user-interface definition for the 'report' Shiny web application
 # for 'Nakke'
 
-require(rCharts)
 require(highcharter)
 data("RegData")
 
@@ -14,14 +13,13 @@ if (1==0) {
 shinyUI(navbarPage(title = "NKR NAKKE", theme = "bootstrap.css",
 
   tabPanel("Andeler",
-           #pageWithSidebar(
              sidebarLayout(
-             #headerPanel(title=h3("Brukervalg")),
              sidebarPanel(
-               nakkeStandardInput("figAndeler"),
                selectInput("andelerValgtVar", "Variabel:",
                            valgtVarFigAndeler(),
-                           selected = "Alder")
+                           selected = "Alder"),
+               nakkeStandardInput("figAndeler"),
+               downloadButton("downloadData", label = "Last ned data")
 #                selectInput("andelerEnhetsUtvalg", "Enhetsutvalg:",
 #                            c("Hele landet" = 0,
 #                              "Egen enhet mot resten av landet" = 1,
@@ -34,7 +32,6 @@ shinyUI(navbarPage(title = "NKR NAKKE", theme = "bootstrap.css",
                ),
                tabPanel("Data",
                         DT::dataTableOutput("andelerTable")
-                        #tags$h3("Tall her, da...")
                )
              ))
            )),
