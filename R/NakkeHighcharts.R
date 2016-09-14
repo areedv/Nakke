@@ -237,7 +237,7 @@ GjsnGrVarHighchart <- function(Midt, N, Ngrtxt, tittel, utvalgTxt, GrNavnSort,
                       enableMouseTracking = FALSE)
   
   h1 <- hc_exporting(h1, enabled = TRUE)
-  htmlwidgets::saveWidget(h1, "~/tmp/FromRShiny.html", selfcontained = FALSE)
+  #htmlwidgets::saveWidget(h1, "~/tmp/FromRShiny.html", selfcontained = FALSE)
   
   return(h1)
 }
